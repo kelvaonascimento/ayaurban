@@ -77,22 +77,22 @@ export default function AyaUrbanLanding() {
     { name: 'Classe A', value: 6.5, color: '#ff6b35', desc: '+20 SM' },
   ]
 
-  // Dados reais de m² - Lançamentos Alto Padrão ABC (Dez/2024 - Fontes: Construtoras, ABC Apartamentos)
+  // Dados de m² - A Preencher quando tivermos os valores do AYA Urban
   const priceM2Data = [
-    { location: 'AYA Urban', price: 8420, fill: '#ff6b35' },     // Ribeirão Pires - 114m²
+    { location: 'AYA Urban', price: 0, fill: '#ff6b35' },         // A Preencher
     { location: 'Mauá AP', price: 8500, fill: '#9ca3af' },        // Splendore Vila Bocaina - 195m²
     { location: 'S. Bernardo', price: 11000, fill: '#d1d5db' },   // Lançamentos alto padrão
     { location: 'Sto André', price: 13000, fill: '#f59e0b' },     // Jardim/Campestre (Patriani, Motiró)
   ]
 
-  // Comparativo real: AYA vs Splendor Patriani vs Le Rêve (Dez/2024)
+  // Comparativo - A Preencher quando tivermos dados completos
   const radarData = [
-    { subject: 'Localização', AYA: 75, Splendor: 90, LeReve: 92 },
-    { subject: 'Preço/m²', AYA: 90, Splendor: 55, LeReve: 50 },
-    { subject: 'Lazer', AYA: 95, Splendor: 85, LeReve: 75 },
-    { subject: 'Tech', AYA: 85, Splendor: 95, LeReve: 80 },
-    { subject: 'Metragem', AYA: 75, Splendor: 95, LeReve: 85 },
-    { subject: 'Pioneirismo', AYA: 100, Splendor: 60, LeReve: 65 },
+    { subject: 'Localização', AYA: 0, Splendor: 90, LeReve: 92 },
+    { subject: 'Preço/m²', AYA: 0, Splendor: 55, LeReve: 50 },
+    { subject: 'Lazer', AYA: 0, Splendor: 85, LeReve: 75 },
+    { subject: 'Tech', AYA: 0, Splendor: 95, LeReve: 80 },
+    { subject: 'Metragem', AYA: 70, Splendor: 95, LeReve: 85 },
+    { subject: 'Pioneirismo', AYA: 0, Splendor: 60, LeReve: 65 },
   ]
 
   const employmentData = [
@@ -127,7 +127,7 @@ export default function AyaUrbanLanding() {
       tasks: [
         { item: 'Criar campanha Look-a-Like expandida (ABC + SP)', type: 'strategy' },
         { item: 'Configurar Remarketing para não-convertidos', type: 'strategy' },
-        { item: 'Desenvolver criativos focados em 114m²', type: 'creative' },
+        { item: 'Desenvolver criativos focados nas tipologias (54-133m²)', type: 'creative' },
         { item: 'Definir novo geo-targeting (ABC, Mauá, SP Zona Sul)', type: 'strategy' },
         { item: 'Montar planilha de CAC e projeções', type: 'strategy' },
         { item: 'Compilar materiais da pasta do cliente', type: 'prep' },
@@ -291,7 +291,7 @@ export default function AyaUrbanLanding() {
                 className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 inline-block relative animate-gradient-shift"
                 whileHover={{ scale: 1.05 }}
               >
-                Home Resort
+                Urban
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
                   animate={{ x: ['-200%', '200%'] }}
@@ -308,14 +308,13 @@ export default function AyaUrbanLanding() {
               className="max-w-4xl mx-auto mb-6"
             >
               <p className="text-2xl md:text-3xl font-bold text-gray-700 mb-4">
-                Análise Estratégica Completa de Mercado Imobiliário
+                Análise Estratégica de Mercado Imobiliário
               </p>
               <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                Documento executivo desenvolvido pela <strong className="text-orange-600">Agência RPK</strong> com
-                <strong> levantamento de dados demográficos</strong>, <strong>mapeamento de 10 concorrentes verificados</strong>
-                (Ribeirão Pires + Santo André + ABC), <strong>análise competitiva profunda</strong>,
-                <strong> identificação de públicos-alvo qualificados</strong>, <strong>estratégias de campanha segmentadas</strong> e
-                <strong> projeções de resultados</strong> para os próximos 12 meses.
+                Documento executivo desenvolvido pela <strong className="text-orange-600">Agência RPK</strong> para o
+                <strong> AYA Urban</strong> em Ribeirão Pires/SP. Empreendimento com <strong>60 unidades</strong> de
+                <strong> 54m² a 133m²</strong>, incluindo <strong>4 coberturas duplex</strong>.
+                Previsão de entrega: <strong>Outubro/2029</strong>.
               </p>
             </motion.div>
             <motion.div
@@ -326,17 +325,17 @@ export default function AyaUrbanLanding() {
             >
               <span className="flex items-center gap-2">
                 <Building2 className="h-4 w-4 text-orange-600" />
-                96 unidades
+                60 unidades
               </span>
               <span className="w-1 h-1 rounded-full bg-gray-400"></span>
               <span className="flex items-center gap-2">
                 <Clock className="h-4 w-4 text-orange-600" />
-                Entrega: Março 2028
+                Entrega: Outubro 2029
               </span>
               <span className="w-1 h-1 rounded-full bg-gray-400"></span>
               <span className="flex items-center gap-2">
                 <BarChart3 className="h-4 w-4 text-orange-600" />
-                15+ Concorrentes Mapeados
+                Tipologias: 54m² a 133m²
               </span>
             </motion.div>
           </div>
@@ -348,7 +347,7 @@ export default function AyaUrbanLanding() {
             transition={{ delay: 0.4 }}
             className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8"
           >
-            {/* Large Card - Preço */}
+            {/* Large Card - Tipologias */}
             <div className="md:col-span-2 md:row-span-2 bg-gray-900 rounded-3xl p-8 text-white relative overflow-hidden cursor-pointer hover-lift">
               <GlowingEffect
                 spread={40}
@@ -365,21 +364,31 @@ export default function AyaUrbanLanding() {
               />
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm font-medium text-white/60">PREÇO 114M²</span>
-                  <DollarSign className="h-8 w-8 text-orange-500" />
+                  <span className="text-sm font-medium text-white/60">TIPOLOGIAS</span>
+                  <Home className="h-8 w-8 text-orange-500" />
                 </div>
-                <p className="text-6xl md:text-7xl font-black mb-2">R$ 959.500</p>
-                <p className="text-xl text-white/60">a R$ 962.500</p>
-                <div className="mt-6 flex items-center space-x-4">
-                  <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-full w-2/3 bg-gradient-to-r from-orange-600 to-orange-400 rounded-full"></div>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center border-b border-white/10 pb-2">
+                    <span className="text-white/80">54,30m²</span>
+                    <span className="text-orange-400 font-bold">2 dorms (1 suíte)</span>
                   </div>
-                  <span className="text-sm font-bold text-orange-400">67% vendido</span>
+                  <div className="flex justify-between items-center border-b border-white/10 pb-2">
+                    <span className="text-white/80">60,80m²</span>
+                    <span className="text-orange-400 font-bold">2 dorms (1 suíte)</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-white/10 pb-2">
+                    <span className="text-white/80">69,53m²</span>
+                    <span className="text-orange-400 font-bold">3 dorms (2 suítes)</span>
+                  </div>
+                  <div className="flex justify-between items-center pt-2">
+                    <span className="text-white/80">133,33m² <span className="text-xs text-orange-400">(Cobertura Duplex)</span></span>
+                    <span className="text-orange-400 font-bold">3 dorms (2 suítes)</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Price/m² */}
+            {/* Unidades */}
             <motion.div
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.98 }}
@@ -387,13 +396,13 @@ export default function AyaUrbanLanding() {
             >
               <GlowingEffect disabled={false} proximity={80} blur={12} spread={25} borderWidth={2} />
               <div className="flex items-center justify-between mb-3 relative z-10">
-                <span className="text-xs font-bold text-gray-500 uppercase">Preço/m²</span>
+                <span className="text-xs font-bold text-gray-500 uppercase">Unidades</span>
                 <motion.div animate={{ y: [0, -3, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-                  <BarChart3 className="h-6 w-6 text-orange-600" />
+                  <Building2 className="h-6 w-6 text-orange-600" />
                 </motion.div>
               </div>
-              <p className="text-4xl font-black text-gray-900 mb-1 relative z-10">R$ 8.420</p>
-              <p className="text-sm text-green-600 font-semibold relative z-10">26% abaixo do ABC alto padrão</p>
+              <p className="text-4xl font-black text-gray-900 mb-1 relative z-10">60</p>
+              <p className="text-sm text-gray-600 font-semibold relative z-10">+ 4 coberturas duplex</p>
             </motion.div>
 
             {/* Lazer */}
@@ -413,8 +422,8 @@ export default function AyaUrbanLanding() {
                   <Sparkles className="h-6 w-6" />
                 </motion.div>
               </div>
-              <p className="text-4xl font-black mb-1 relative z-10">31 itens</p>
-              <p className="text-sm text-white/80 relative z-10">Conceito Resort</p>
+              <p className="text-2xl font-black mb-1 relative z-10">A Preencher</p>
+              <p className="text-sm text-white/80 relative z-10">Aguardando dados</p>
             </motion.div>
 
             {/* Público Local */}
@@ -447,8 +456,8 @@ export default function AyaUrbanLanding() {
                   <Clock className="h-6 w-6 text-gray-900" />
                 </motion.div>
               </div>
-              <p className="text-4xl font-black text-gray-900 mb-1">Mar/28</p>
-              <p className="text-sm text-gray-600">Março de 2028</p>
+              <p className="text-4xl font-black text-gray-900 mb-1">Out/29</p>
+              <p className="text-sm text-gray-600">Outubro de 2029</p>
             </motion.div>
           </motion.div>
 
@@ -531,11 +540,12 @@ export default function AyaUrbanLanding() {
               </CardHeader>
               <CardContent className="space-y-3">
                 {[
-                  { label: 'Local', value: 'R. Miguel Prisco, 2001' },
-                  { label: 'Incorporação', value: 'MBrasil + Wind + RAP' },
-                  { label: 'Torre', value: '1 torre, 11 andares' },
-                  { label: 'Restantes', value: '114m² (3 dorms)' },
-                  { label: 'Tech', value: 'Smart Home + Alexa' },
+                  { label: 'Endereço', value: 'R. José P. S. Novaes Jr.' },
+                  { label: 'Incorporação', value: 'Wind + RAP' },
+                  { label: 'Torre', value: '1 torre, 10 pavimentos' },
+                  { label: 'Terreno', value: '1.202,90m²' },
+                  { label: 'Vagas', value: '64 (incl. 2 PNE)' },
+                  { label: 'Elevadores', value: '2 por andar' },
                 ].map((item, i) => (
                   <div key={i} className="flex justify-between py-2 border-b border-gray-100 last:border-0">
                     <span className="text-sm text-gray-600">{item.label}</span>
@@ -545,7 +555,7 @@ export default function AyaUrbanLanding() {
               </CardContent>
             </Card>
 
-            {/* Preço Card */}
+            {/* Estrutura Card */}
             <Card className="border border-gray-200 bg-white hover:border-gray-300 transition-all hover-lift cursor-pointer relative overflow-hidden">
               <GlowingEffect
                 spread={40}
@@ -558,19 +568,31 @@ export default function AyaUrbanLanding() {
               <CardHeader>
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center">
-                    <DollarSign className="h-5 w-5 text-gray-700" />
+                    <Building2 className="h-5 w-5 text-gray-700" />
                   </div>
-                  <CardTitle className="text-gray-900">Valores</CardTitle>
+                  <CardTitle className="text-gray-900">Estrutura</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="text-center py-4 bg-gray-50 rounded-xl">
-                  <p className="text-4xl font-black text-gray-900 mb-1">R$ 8.420</p>
-                  <p className="text-sm text-gray-600">Preço por m²</p>
+              <CardContent className="space-y-2 text-sm">
+                <div className="flex justify-between py-1">
+                  <span className="text-gray-600">2 Subsolos</span>
+                  <span className="font-bold text-gray-900">Garagem</span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-t border-gray-100">
-                  <span className="text-sm text-gray-600">Valor Total</span>
-                  <span className="text-lg font-bold text-gray-900">R$ 959k - 962k</span>
+                <div className="flex justify-between py-1">
+                  <span className="text-gray-600">Térreo</span>
+                  <span className="font-bold text-gray-900">Lazer</span>
+                </div>
+                <div className="flex justify-between py-1">
+                  <span className="text-gray-600">1º ao 5º</span>
+                  <span className="font-bold text-gray-900">50 unid. Tipo</span>
+                </div>
+                <div className="flex justify-between py-1">
+                  <span className="text-gray-600">6º Pav.</span>
+                  <span className="font-bold text-gray-900">6 Tipo + 4 Duplex</span>
+                </div>
+                <div className="flex justify-between py-1">
+                  <span className="text-gray-600">7º Pav.</span>
+                  <span className="font-bold text-gray-900">Varandas + Lazer</span>
                 </div>
               </CardContent>
             </Card>
@@ -595,17 +617,17 @@ export default function AyaUrbanLanding() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-center py-4 bg-gray-50 rounded-xl">
-                  <p className="text-4xl font-black text-gray-900 mb-1">96</p>
+                  <p className="text-4xl font-black text-gray-900 mb-1">60</p>
                   <p className="text-sm text-gray-600">Total de apartamentos</p>
                 </div>
                 <div className="flex justify-between items-center py-2 border-t border-gray-100">
                   <span className="text-sm text-gray-600">Entrega</span>
-                  <span className="text-lg font-bold text-gray-900">Março/2028</span>
+                  <span className="text-lg font-bold text-gray-900">Outubro/2029</span>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Diferenciais Expandido com Comparação */}
+            {/* Tipologias Card */}
             <Card className="md:col-span-3 border border-gray-200 bg-white hover:border-gray-300 transition-all hover-lift cursor-pointer relative overflow-hidden">
               <GlowingEffect
                 spread={40}
@@ -618,120 +640,54 @@ export default function AyaUrbanLanding() {
               <CardHeader>
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center">
-                    <Award className="h-5 w-5 text-gray-700" />
+                    <Home className="h-5 w-5 text-gray-700" />
                   </div>
                   <div>
-                    <CardTitle className="text-gray-900">Diferenciais Completos - Comparativo</CardTitle>
-                    <CardDescription>31 itens AYA vs concorrentes reais do ABC</CardDescription>
+                    <CardTitle className="text-gray-900">Tipologias Disponíveis</CardTitle>
+                    <CardDescription>4 opções de plantas para diferentes perfis</CardDescription>
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
-                {/* Comparison Table */}
-                <div className="overflow-x-auto mb-6">
-                  <table className="w-full min-w-[600px]">
-                    <thead>
-                      <tr className="border-b-2 border-gray-200">
-                        <th className="text-left py-3 px-2 text-sm font-bold text-gray-700">Item de Lazer</th>
-                        <th className="text-center py-3 px-2 text-sm font-bold text-orange-600">AYA</th>
-                        <th className="text-center py-3 px-2 text-sm font-bold text-gray-600">Splendor</th>
-                        <th className="text-center py-3 px-2 text-sm font-bold text-gray-600">Le Rêve</th>
-                        <th className="text-center py-3 px-2 text-sm font-bold text-gray-600">Splendore</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {[
-                        // Dados reais pesquisados em Dez/2024 - Fontes: Sites das construtoras
-                        { item: 'Piscina Aquecida/Climatizada', aya: true, splendor: true, lereve: true, splendore: false, highlight: false },
-                        { item: 'Piscinas Múltiplas (2+)', aya: true, splendor: true, lereve: true, splendore: true, highlight: false },
-                        { item: 'Beach Arena', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Beach Tennis', aya: false, splendor: true, lereve: false, splendore: true, highlight: false },
-                        { item: 'Cinema', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Espaço Metaverso/Gamer', aya: false, splendor: true, lereve: false, splendore: false, highlight: false },
-                        { item: 'Coworking', aya: true, splendor: false, lereve: true, splendore: true, highlight: false },
-                        { item: 'Sala de Reunião', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Pet Place', aya: true, splendor: true, lereve: true, splendore: true, highlight: false },
-                        { item: 'Dog Wash', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Pet Care', aya: false, splendor: false, lereve: false, splendore: true, highlight: false },
-                        { item: 'Academia/Fitness', aya: true, splendor: true, lereve: true, splendore: true, highlight: false },
-                        { item: 'Fitness Externo', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Pilates/Funcional', aya: false, splendor: true, lereve: true, splendore: false, highlight: false },
-                        { item: 'Ateliê do Chef', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Churrasqueira', aya: true, splendor: true, lereve: true, splendore: true, highlight: false },
-                        { item: 'Salão de Festas', aya: true, splendor: true, lereve: true, splendore: true, highlight: false },
-                        { item: 'Casa de Campo', aya: false, splendor: true, lereve: false, splendore: false, highlight: false },
-                        { item: 'Playground', aya: true, splendor: true, lereve: true, splendore: true, highlight: false },
-                        { item: 'Brinquedoteca', aya: true, splendor: true, lereve: true, splendore: true, highlight: false },
-                        { item: 'Espaço Teen', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Praça do Fogo/Fire Place', aya: true, splendor: false, lereve: false, splendore: true, highlight: false },
-                        { item: 'Pool Lounge/Bar Piscina', aya: true, splendor: false, lereve: true, splendore: false, highlight: false },
-                        { item: 'Solarium', aya: true, splendor: false, lereve: true, splendore: true, highlight: false },
-                        { item: 'Market/Minimercado', aya: true, splendor: false, lereve: true, splendore: false, highlight: false },
-                        { item: 'Lavanderia Coletiva', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Espaço Beauty', aya: true, splendor: false, lereve: false, splendore: true, highlight: false },
-                        { item: 'Horta Orgânica', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Praça da Árvore', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Área Uber', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Delivery Room', aya: false, splendor: false, lereve: true, splendore: true, highlight: false },
-                        { item: 'Lounge Externo', aya: true, splendor: false, lereve: false, splendore: false, highlight: true },
-                        { item: 'Wi-Fi Áreas Comuns', aya: true, splendor: false, lereve: false, splendore: false, highlight: false },
-                        { item: 'Energia Solar/Fotovoltaica', aya: true, splendor: true, lereve: true, splendore: false, highlight: false },
-                        { item: 'Gerador Full', aya: true, splendor: true, lereve: true, splendore: false, highlight: false },
-                        { item: 'Sauna', aya: false, splendor: true, lereve: false, splendore: false, highlight: false },
-                      ].map((row, i) => (
-                        <motion.tr
-                          key={i}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: i * 0.02 }}
-                          className={`border-b border-gray-100 ${row.highlight ? 'bg-orange-50' : ''}`}
-                        >
-                          <td className={`py-2 px-2 text-sm ${row.highlight ? 'font-bold text-orange-900' : 'text-gray-700'}`}>
-                            {row.item}
-                            {row.highlight && <span className="ml-2 text-xs bg-orange-200 text-orange-700 px-2 py-0.5 rounded-full">Exclusivo</span>}
-                          </td>
-                          <td className="py-2 px-2 text-center">
-                            {row.aya ? <CheckCircle className="h-5 w-5 text-orange-600 mx-auto" /> : <X className="h-5 w-5 text-gray-300 mx-auto" />}
-                          </td>
-                          <td className="py-2 px-2 text-center">
-                            {row.splendor ? <CheckCircle className="h-5 w-5 text-gray-400 mx-auto" /> : <X className="h-5 w-5 text-gray-200 mx-auto" />}
-                          </td>
-                          <td className="py-2 px-2 text-center">
-                            {row.lereve ? <CheckCircle className="h-5 w-5 text-gray-400 mx-auto" /> : <X className="h-5 w-5 text-gray-200 mx-auto" />}
-                          </td>
-                          <td className="py-2 px-2 text-center">
-                            {row.splendore ? <CheckCircle className="h-5 w-5 text-gray-400 mx-auto" /> : <X className="h-5 w-5 text-gray-200 mx-auto" />}
-                          </td>
-                        </motion.tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  {[
+                    { metragem: '54,30m²', quartos: '2 Dormitórios', suites: '1 Suíte', tipo: 'Tipo', cor: 'gray' },
+                    { metragem: '60,80m²', quartos: '2 Dormitórios', suites: '1 Suíte', tipo: 'Tipo', cor: 'gray' },
+                    { metragem: '69,53m²', quartos: '3 Dormitórios', suites: '2 Suítes', tipo: 'Tipo', cor: 'orange' },
+                    { metragem: '133,33m²', quartos: '3 Dormitórios', suites: '2 Suítes', tipo: 'Cobertura Duplex', cor: 'orange' },
+                  ].map((planta, i) => (
+                    <div key={i} className={`rounded-xl p-6 text-center border-2 ${planta.cor === 'orange' ? 'border-orange-300 bg-orange-50' : 'border-gray-200 bg-gray-50'}`}>
+                      <p className={`text-3xl font-black mb-2 ${planta.cor === 'orange' ? 'text-orange-600' : 'text-gray-900'}`}>{planta.metragem}</p>
+                      <p className="text-sm font-bold text-gray-700 mb-1">{planta.quartos}</p>
+                      <p className="text-sm text-gray-600 mb-2">{planta.suites}</p>
+                      <span className={`text-xs px-3 py-1 rounded-full ${planta.cor === 'orange' ? 'bg-orange-200 text-orange-700' : 'bg-gray-200 text-gray-700'}`}>
+                        {planta.tipo}
+                      </span>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Summary Stats */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                  <div className="bg-gray-900 rounded-xl p-4 text-center border border-gray-800">
-                    <p className="text-3xl font-black text-white">31</p>
-                    <p className="text-sm text-gray-300 font-medium">Itens AYA</p>
+                {/* Lazer - A Preencher */}
+                <div className="mt-8 p-6 bg-amber-50 rounded-xl border-2 border-amber-200 border-dashed">
+                  <div className="flex items-center gap-3 mb-4">
+                    <AlertCircle className="h-6 w-6 text-amber-600" />
+                    <h4 className="text-lg font-bold text-amber-900">Área de Lazer - Dados Pendentes</h4>
                   </div>
-                  <div className="bg-gray-50 rounded-xl p-4 text-center border border-gray-200">
-                    <p className="text-3xl font-black text-gray-700">14</p>
-                    <p className="text-sm text-gray-600 font-medium">Splendor Patriani</p>
-                  </div>
-                  <div className="bg-gray-50 rounded-xl p-4 text-center border border-gray-200">
-                    <p className="text-3xl font-black text-gray-700">16</p>
-                    <p className="text-sm text-gray-600 font-medium">Le Rêve</p>
-                  </div>
-                  <div className="bg-gray-50 rounded-xl p-4 text-center border border-gray-200">
-                    <p className="text-3xl font-black text-gray-700">15</p>
-                    <p className="text-sm text-gray-600 font-medium">Splendore Mauá</p>
+                  <p className="text-amber-800 mb-4">
+                    Os itens de lazer do AYA Urban ainda não foram informados. Esta seção será atualizada assim que recebermos as informações completas do empreendimento.
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {['Piscina', 'Academia', 'Salão de Festas', 'Churrasqueira', 'Playground', 'Pet Place', 'Coworking', 'Outros'].map((item, i) => (
+                      <div key={i} className="bg-white/50 rounded-lg p-3 text-center border border-amber-200">
+                        <span className="text-sm text-amber-700">A Confirmar</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Radar Chart */}
+            {/* Localização Card */}
             <Card className="md:col-span-3 border border-gray-200 bg-white relative overflow-hidden">
               <GlowingEffect
                 spread={40}
@@ -742,21 +698,46 @@ export default function AyaUrbanLanding() {
                 borderWidth={2}
               />
               <CardHeader>
-                <CardTitle className="text-gray-900">Análise Competitiva</CardTitle>
-                <CardDescription>Comparativo multidimensional</CardDescription>
+                <CardTitle className="text-gray-900">Localização</CardTitle>
+                <CardDescription>Rua José Pinto da Silva Novaes Junior - Ribeirão Pires, SP</CardDescription>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={350}>
-                  <RadarChart data={radarData}>
-                    <PolarGrid stroke="#e5e7eb" />
-                    <PolarAngleAxis dataKey="subject" tick={{ fill: '#6b7280', fontSize: 14 }} />
-                    <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fill: '#9ca3af', fontSize: 12 }} />
-                    <Radar name="AYA" dataKey="AYA" stroke="#ff6b35" fill="#ff6b35" fillOpacity={0.3} strokeWidth={3} />
-                    <Radar name="Splendor" dataKey="Splendor" stroke="#9ca3af" fill="#9ca3af" fillOpacity={0.1} strokeWidth={2} />
-                    <Radar name="Le Rêve" dataKey="LeReve" stroke="#f59e0b" fill="#f59e0b" fillOpacity={0.1} strokeWidth={2} />
-                    <Legend />
-                  </RadarChart>
-                </ResponsiveContainer>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="bg-gray-50 rounded-xl p-4">
+                      <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                        <MapPin className="h-5 w-5 text-orange-600" />
+                        Endereço Completo
+                      </h4>
+                      <p className="text-gray-700">Rua José Pinto da Silva Novaes Junior, 0</p>
+                      <p className="text-gray-700">Ribeirão Pires - SP</p>
+                      <p className="text-gray-600">CEP: 09400-620</p>
+                    </div>
+                    <div className="bg-gray-50 rounded-xl p-4">
+                      <h4 className="font-bold text-gray-900 mb-3">Diferenciais da Região</h4>
+                      <ul className="space-y-2">
+                        {[
+                          'Proximidade com o ABC Paulista',
+                          'Fácil acesso a São Paulo',
+                          'Região em desenvolvimento',
+                          'Qualidade de vida'
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
+                            <Check className="h-4 w-4 text-green-600" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="bg-amber-50 rounded-xl p-6 border-2 border-amber-200 border-dashed flex flex-col items-center justify-center">
+                    <AlertCircle className="h-12 w-12 text-amber-500 mb-4" />
+                    <h4 className="font-bold text-amber-900 mb-2">Análise Competitiva</h4>
+                    <p className="text-amber-800 text-center text-sm">
+                      Comparativo com concorrentes será atualizado após receber dados completos de lazer e preços.
+                    </p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
