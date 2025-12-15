@@ -108,16 +108,16 @@ export default function AyaUrbanLanding() {
     {
       nome: 'Residencial Áquila',
       cidade: 'Ribeirão Pires',
-      construtora: 'FBonano Engenharia',
+      construtora: 'Obra Nobre',
       metragem: '58-60m²',
       quartos: '2 dorms (1 suíte)',
       preco: 'R$ 441k',
       precoM2: 7350,
-      entrega: 'Jan/2027',
+      entrega: 'Dez/2026',
       lazer: '450m da Estação CPTM, 150m do Hospital. Sacada grill, coworking, brinquedoteca, playground. 36 unidades',
       distancia: '~1,5 km',
       status: 'Em obras - ~50% vendido',
-      link: 'https://fbonanoengenharia.com.br/'
+      link: 'https://obranobre.com.br/lancamentos/'
     },
     {
       nome: 'Residencial Duetto',
@@ -919,7 +919,7 @@ export default function AyaUrbanLanding() {
                 </ResponsiveContainer>
                 <div className="bg-orange-50 rounded-xl p-3 border border-orange-200 mt-4">
                   <p className="text-xs text-orange-900">
-                    <strong>AYA Urban R$ 8.938/m²</strong> - Similar a Santo André (Motiró ~R$ 8.345/m²), acima de Mauá (~R$ 5.770/m²) e Suzano (~R$ 5.000/m²)
+                    <strong>AYA Urban R$ 8.938/m²</strong> - Similar a Santo André (Motiró ~R$ 8.345/m²), acima de Mauá (~R$ 6.900/m²)
                   </p>
                 </div>
               </CardContent>
@@ -1267,25 +1267,19 @@ export default function AyaUrbanLanding() {
                   </motion.tr>
                   {[
                     // RIBEIRÃO PIRES - Concorrentes diretos (mesmo segmento 50-70m²)
+                    { name: 'AYA Home Resort', construtora: 'Wind/RAP', local: 'Ribeirão Pires', area: '69-114m²', price: 'R$580k-930k', priceM2: 'R$ 8.400', date: 'Início 2028', link: 'https://windincorporadora.com.br/' },
                     { name: 'Residencial Duetto', construtora: 'Toth Construtora', local: 'Ribeirão Pires', area: '40-57m²', price: 'R$242k-378k', priceM2: 'R$ 6.400', date: '2025', link: 'https://tothconstrutora.com.br/' },
-                    { name: 'Residencial Áquila', construtora: 'FBonano Engenharia', local: 'Ribeirão Pires', area: '58-60m²', price: '~R$ 440k', priceM2: 'R$ 7.350', date: '2027', link: 'https://fbonanoengenharia.com.br/' },
+                    { name: 'Residencial Áquila', construtora: 'Obra Nobre', local: 'Ribeirão Pires', area: '58-60m²', price: '~R$ 440k', priceM2: 'R$ 7.350', date: 'Dez/2026', link: 'https://obranobre.com.br/lancamentos/' },
 
-                    // MAUÁ - Concorrentes diretos (mesmo segmento)
-                    { name: 'Vila Bocaina', construtora: 'SAMAX', local: 'Mauá', area: '64m²', price: 'R$ 359k', priceM2: 'R$ 5.609', date: '2026', link: 'https://www.agenteimovel.com.br/' },
-                    { name: 'Mont Blanc', construtora: 'A definir', local: 'Mauá', area: '2-3 dorms', price: 'A partir R$310k', priceM2: 'R$ 5.500', date: '2026', link: 'https://loft.com.br/' },
-                    { name: 'Paulo Makoto', construtora: 'Paulo Makoto', local: 'Mauá', area: '55-58m²', price: '~R$ 350k', priceM2: 'R$ 6.200', date: '2025', link: 'https://www.abcimovel.com.br/' },
-
-                    // SUZANO - Concorrentes diretos
-                    { name: 'Parque das Flores', construtora: 'A definir', local: 'Suzano', area: '65-75m²', price: 'R$ 288k', priceM2: 'R$ 4.431', date: '2025', link: 'https://loft.com.br/' },
-                    { name: 'Sou Mais Suzano', construtora: 'MRV', local: 'Suzano', area: '46-48m²', price: 'MCMV', priceM2: 'R$ 4.800', date: '2025', link: 'https://www.mrv.com.br/' },
+                    // MAUÁ - Vila Bocaina (bairro nobre) - Dados validados Dez/2024
+                    { name: 'Edifício Angélica', construtora: 'Paulo Makoto', local: 'Mauá', area: '60-85m²', price: 'R$360k-480k', priceM2: 'R$ 6.000', date: '2025', link: 'https://www.paulomakoto.com.br/apartamento/edificio-angelica' },
+                    { name: 'Gran Vista', construtora: 'AZCA Incorporadora', local: 'Mauá', area: '92-184m²', price: 'A partir R$726k', priceM2: 'R$ 7.900', date: '2026', link: 'https://www.granvistamaua.com.br/' },
+                    { name: 'Residencial Mandarim', construtora: 'A definir', local: 'Mauá', area: '83-220m²', price: 'A partir R$570k', priceM2: 'R$ 6.800', date: '2026', link: 'https://residencialmandarim.com/' },
 
                     // SANTO ANDRÉ - Mesmo segmento (50-70m², 2-3 dorms)
                     { name: 'Vision Campestre', construtora: 'Econ', local: 'Sto André', area: '43-67m²', price: 'A partir R$367k', priceM2: 'R$ 6.672', date: '10/2026', link: 'https://www.construtorapatriani.com.br/' },
                     { name: 'Motiró Casa Branca', construtora: 'Jacy/Motiró', local: 'Sto André', area: '57-90m²', price: 'R$473k-807k', priceM2: 'R$ 8.345', date: '02/2028', link: 'https://casabranca.bymotiro.com.br/' },
                     { name: 'Jump by Motiró', construtora: 'Jacy/Motiró', local: 'Sto André', area: 'Variadas', price: 'Consultar', priceM2: 'R$ 9.000', date: '07/2025', link: 'https://grupomotiro.com.br/' },
-
-                    // SÃO BERNARDO DO CAMPO - Mesmo segmento
-                    { name: 'Média SBC 2 dorms', construtora: 'Diversos', local: 'S. Bernardo', area: '~70m²', price: '~R$ 370k', priceM2: 'R$ 7.952', date: 'Vários', link: 'https://loft.com.br/' },
                   ].map((comp, i) => (
                     <motion.tr
                       key={i}
@@ -1313,8 +1307,8 @@ export default function AyaUrbanLanding() {
               </table>
               <div className="mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4 bg-gray-50 rounded-xl">
                 <p className="text-sm text-gray-600">
-                  <strong className="text-orange-600">11 empreendimentos</strong> mapeados (mesmo segmento 50-70m²):
-                  <strong> 2 em Ribeirão Pires</strong>, <strong>3 em Santo André</strong>, <strong>1 em São Bernardo</strong>, <strong>3 em Mauá</strong>, <strong>2 em Suzano</strong>
+                  <strong className="text-orange-600">9 empreendimentos</strong> mapeados (mesmo segmento 50-70m²):
+                  <strong> 3 em Ribeirão Pires</strong>, <strong>3 em Santo André</strong>, <strong>3 em Mauá</strong>
                 </p>
                 <span className="text-xs text-gray-500">Fontes: Portais imobiliários, Construtoras | Dez/2024</span>
               </div>
@@ -1331,12 +1325,10 @@ export default function AyaUrbanLanding() {
               <CardDescription>Dados reais pesquisados em Dezembro/2024 - Fontes: Portais imobiliários, Construtoras</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid md:grid-cols-5 gap-4 mb-6">
+              <div className="grid md:grid-cols-3 gap-4 mb-6">
                 {[
                   { region: 'AYA Urban', aya: true, min: 8938, max: 8938, avg: 'R$ 8.938', color: 'orange', desc: 'Ribeirão Pires' },
-                  { region: 'Suzano', aya: false, min: 4431, max: 5500, avg: 'R$ 5.000', color: 'green', desc: 'Parque das Flores' },
-                  { region: 'Mauá', aya: false, min: 5500, max: 6400, avg: 'R$ 5.770', color: 'gray', desc: 'Vila Bocaina, Mont Blanc' },
-                  { region: 'São Bernardo', aya: false, min: 7500, max: 8500, avg: 'R$ 7.952', color: 'gray', desc: 'Média 2 dorms' },
+                  { region: 'Mauá', aya: false, min: 6000, max: 7900, avg: 'R$ 6.900', color: 'gray', desc: 'Angélica, Gran Vista, Mandarim' },
                   { region: 'Santo André', aya: false, min: 6672, max: 9000, avg: 'R$ 8.006', color: 'gray', desc: 'Vision, Motiró' },
                 ].map((item, i) => (
                   <div key={i} className={`p-4 rounded-xl border-2 ${item.aya ? 'border-orange-400 bg-orange-50' : item.color === 'green' ? 'border-green-300 bg-green-50' : 'border-gray-200 bg-gray-50'}`}>
@@ -1346,21 +1338,11 @@ export default function AyaUrbanLanding() {
                   </div>
                 ))}
               </div>
-              <div className="grid md:grid-cols-4 gap-4 p-4 bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl border border-orange-200">
-                <div className="text-center">
-                  <p className="text-xs text-gray-600 uppercase font-bold">AYA vs Suzano</p>
-                  <p className="text-2xl font-black text-red-600">+79%</p>
-                  <p className="text-xs text-gray-500">mais caro (outro segmento)</p>
-                </div>
+              <div className="grid md:grid-cols-2 gap-4 p-4 bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl border border-orange-200">
                 <div className="text-center">
                   <p className="text-xs text-gray-600 uppercase font-bold">AYA vs Mauá</p>
-                  <p className="text-2xl font-black text-red-600">+55%</p>
-                  <p className="text-xs text-gray-500">mais caro que média</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-xs text-gray-600 uppercase font-bold">AYA vs São Bernardo</p>
-                  <p className="text-2xl font-black text-yellow-600">+12%</p>
-                  <p className="text-xs text-gray-500">ligeiramente acima</p>
+                  <p className="text-2xl font-black text-yellow-600">+30%</p>
+                  <p className="text-xs text-gray-500">acima da média</p>
                 </div>
                 <div className="text-center">
                   <p className="text-xs text-gray-600 uppercase font-bold">AYA vs Santo André</p>
