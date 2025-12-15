@@ -13,7 +13,7 @@ import {
   ChevronDown, Menu, X, ChevronLeft, ChevronRight, TrendingDown,
   AlertCircle, Zap, Award, LineChart, FileText, Download, Search,
   CheckCircle, Clock, Shield, Wifi, Mountain, TreePine, Sun,
-  Globe, Instagram, Facebook, ExternalLink
+  Globe, Instagram, Facebook, ExternalLink, Heart
 } from 'lucide-react'
 import Image from 'next/image'
 import {
@@ -77,115 +77,73 @@ export default function AyaUrbanLanding() {
     { name: 'Classe A', value: 6.5, color: '#ff6b35', desc: '+20 SM' },
   ]
 
-  // Dados de m² - Pesquisa Dez/2024 - Fontes: Portais imobiliários, construtoras
-  // AYA Urban: R$ 550k média / 61,54m² média = R$ 8.938/m²
+  // Dados de m² - Pesquisa 2025 - Fonte: PDF Análise Estratégica Ribeirão 3
+  // Ribeirão Pires: periférico ~R$ 4k/m², central R$ 6.5k-10k/m²
+  // AYA Urban: ticket médio ~R$ 550k, tipologias 54-133m² (~R$ 8.938/m² médio)
   const priceM2Data = [
-    { location: 'AYA Urban', price: 8938, fill: '#ff6b35' },       // Ribeirão Pires - 54-70m²
-    { location: 'Suzano', price: 5500, fill: '#22c55e' },          // Parque das Flores ~R$ 288k/65m²
-    { location: 'Mauá', price: 5609, fill: '#9ca3af' },            // Vila Bocaina R$ 359k/64m²
-    { location: 'S. Bernardo', price: 7952, fill: '#d1d5db' },     // Média apartamentos 2 dorms
-    { location: 'Sto André', price: 8345, fill: '#f59e0b' },       // Motiró Casa Branca 57m² R$ 473k
+    { location: 'AYA Urban', price: 8938, fill: '#ff6b35' },       // R$ 550k / 61,5m² média
+    { location: 'Duetto', price: 6400, fill: '#22c55e' },          // R$ 280-400k / 40-57m² (pronto)
+    { location: 'Áquila', price: 7350, fill: '#3b82f6' },          // R$ 441k / 60m²
+    { location: 'AYA Resort', price: 8400, fill: '#f59e0b' },      // R$ 580k / 69m² (concorrente)
+    { location: 'Periférico', price: 4000, fill: '#9ca3af' },      // Média bairros periféricos RP
   ]
 
-  // Dados dos concorrentes pesquisados - Dez/2024
+  // Dados dos concorrentes pesquisados - 2025 (Raio 3km do empreendimento)
+  // Fonte: PDF Análise Estratégica Ribeirão 3 - Wind Incorporadora
   const concorrentesData = [
+    {
+      nome: 'AYA Home Resort',
+      cidade: 'Ribeirão Pires',
+      construtora: 'Wind/RAP',
+      metragem: '69-114m² (Cobert. 229m²)',
+      quartos: '2-3 dorms (1-2 suítes)',
+      preco: 'R$ 580k-930k',
+      precoM2: 8400,
+      entrega: 'Início 2028',
+      lazer: 'Condomínio clube: piscina, jacuzzi, sauna, cinema, salão jogos, brinquedoteca, espaço gourmet. 96 unidades, 2 vagas/apto',
+      distancia: '~1 km',
+      status: 'Lançamento 2025 - Vendas em andamento',
+      link: 'https://windincorporadora.com.br/'
+    },
+    {
+      nome: 'Residencial Áquila',
+      cidade: 'Ribeirão Pires',
+      construtora: 'FBonano Engenharia',
+      metragem: '58-60m²',
+      quartos: '2 dorms (1 suíte)',
+      preco: 'R$ 441k',
+      precoM2: 7350,
+      entrega: 'Jan/2027',
+      lazer: '450m da Estação CPTM, 150m do Hospital. Sacada grill, coworking, brinquedoteca, playground. 36 unidades',
+      distancia: '~1,5 km',
+      status: 'Em obras - ~50% vendido',
+      link: 'https://fbonanoengenharia.com.br/'
+    },
     {
       nome: 'Residencial Duetto',
       cidade: 'Ribeirão Pires',
-      construtora: 'A definir',
+      construtora: 'Toth Construtora',
       metragem: '40-57m²',
-      quartos: '1-2 dorms',
-      preco: 'R$ 242k-378k',
+      quartos: '1-3 dorms (opções c/ suíte)',
+      preco: 'R$ 250k-400k',
       precoM2: 6400,
-      entrega: '2025',
-      lazer: 'Portaria, Salão festas, Academia, Pet place, Beach tênis'
-    },
-    {
-      nome: 'Vila Bocaina',
-      cidade: 'Mauá',
-      construtora: 'SAMAX',
-      metragem: '64m²',
-      quartos: '2 dorms (1 suíte)',
-      preco: 'R$ 359k',
-      precoM2: 5609,
-      entrega: '2026',
-      lazer: 'Elevador, Sacada, Área de serviço'
-    },
-    {
-      nome: 'Mont Blanc',
-      cidade: 'Mauá',
-      construtora: 'A definir',
-      metragem: '2-3 dorms',
-      quartos: '2-3 dorms',
-      preco: 'A partir R$ 310k',
-      precoM2: 5500,
-      entrega: '2026',
-      lazer: 'Torre única 17 andares'
-    },
-    {
-      nome: 'Parque das Flores',
-      cidade: 'Suzano',
-      construtora: 'A definir',
-      metragem: '65-75m²',
-      quartos: '2-3 dorms (1 suíte)',
-      preco: 'R$ 288k',
-      precoM2: 4431,
-      entrega: '2025',
-      lazer: 'Churrasqueira, Varanda gourmet, 2 blocos'
-    },
-    {
-      nome: 'Sou Mais Suzano',
-      cidade: 'Suzano',
-      construtora: 'A definir',
-      metragem: '46-48m²',
-      quartos: '2 dorms',
-      preco: 'MCMV',
-      precoM2: 4800,
-      entrega: '2025',
-      lazer: 'Piscina, Academia, Churrasqueira, Coworking, Pet'
-    },
-    {
-      nome: 'Vision Campestre',
-      cidade: 'Santo André',
-      construtora: 'Econ',
-      metragem: '43-67m²',
-      quartos: '2 dorms',
-      preco: 'A partir R$ 367k',
-      precoM2: 6672,
-      entrega: '10/2026',
-      lazer: 'Varanda gourmet 8m², 1-2 vagas'
-    },
-    {
-      nome: 'Motiró Casa Branca',
-      cidade: 'Santo André',
-      construtora: 'Jacy/Motiró',
-      metragem: '57-90m²',
-      quartos: '2-3 dorms (1 suíte)',
-      preco: 'R$ 473k-807k',
-      precoM2: 8345,
-      entrega: '02/2028',
-      lazer: 'Torres A/B/C, Terraço gourmet, Alto padrão'
-    },
-    {
-      nome: 'Jump by Motiró',
-      cidade: 'Santo André',
-      construtora: 'Jacy/Motiró',
-      metragem: 'Variadas',
-      quartos: '2-3 dorms',
-      preco: 'Consultar',
-      precoM2: 9000,
-      entrega: '07/2025',
-      lazer: 'Vila Assunção, Próx. Parque Central'
+      entrega: 'Entregue 2025',
+      lazer: 'Planta flexível, salão de festas, fitness externo. Bairro Roncon, 5-7 min do Centro',
+      distancia: '~2,5 km',
+      status: 'Pronto - Últimas unidades',
+      link: 'https://tothconstrutora.com.br/'
     }
   ]
 
-  // Comparativo AYA Urban vs Concorrentes diretos (mesmo segmento)
+  // Comparativo AYA Urban vs Concorrentes locais (raio 3km Ribeirão Pires)
+  // Fonte: PDF Análise Estratégica - Wind Incorporadora
   const radarData = [
-    { subject: 'Preço/m²', AYA: 65, Motiro: 70, Vision: 85, Duetto: 90 },
-    { subject: 'Metragem', AYA: 85, Motiro: 80, Vision: 70, Duetto: 60 },
-    { subject: 'Localização', AYA: 75, Motiro: 95, Vision: 90, Duetto: 75 },
-    { subject: 'Infraestrutura', AYA: 80, Motiro: 85, Vision: 75, Duetto: 70 },
-    { subject: 'Potencial Valorização', AYA: 95, Motiro: 70, Vision: 75, Duetto: 80 },
+    { subject: 'Custo-Benefício', AYAUrban: 75, AYAResort: 60, Aquila: 80, Duetto: 90 },
+    { subject: 'Metragem', AYAUrban: 85, AYAResort: 95, Aquila: 70, Duetto: 55 },
+    { subject: 'Localização', AYAUrban: 95, AYAResort: 90, Aquila: 95, Duetto: 70 },
+    { subject: 'Lazer/Estrutura', AYAUrban: 85, AYAResort: 100, Aquila: 65, Duetto: 50 },
+    { subject: 'Exclusividade', AYAUrban: 90, AYAResort: 85, Aquila: 75, Duetto: 60 },
+    { subject: 'Valorização', AYAUrban: 95, AYAResort: 80, Aquila: 75, Duetto: 70 },
   ]
 
   const employmentData = [
@@ -204,74 +162,74 @@ export default function AyaUrbanLanding() {
   const checklistWeeks = [
     {
       week: 'Semana 1-2',
-      title: 'Sprint Inicial & Auditorias',
+      title: 'Preparação e Setup',
       tasks: [
-        { item: 'Análise SEO completa da landing page', type: 'audit' },
-        { item: 'Auditoria Google Analytics (GA4) e configuração de eventos', type: 'audit' },
-        { item: 'Auditoria Meta Business Manager e Pixel', type: 'audit' },
-        { item: 'Análise histórica de campanhas e CAC', type: 'audit' },
-        { item: 'Levantamento de criativos existentes', type: 'strategy' },
-        { item: 'Mapeamento completo de pixel e eventos', type: 'audit' },
+        { item: 'Finalizar materiais de apoio (imagens 3D, plantas humanizadas)', type: 'prep' },
+        { item: 'Preparar tabela de preços e condições de pagamento', type: 'prep' },
+        { item: 'Configurar tracking (pixel Meta, GA4, UTMs)', type: 'audit' },
+        { item: 'Landing page responsiva com formulário de lead', type: 'strategy' },
+        { item: 'Listar e preparar corretores parceiros para follow-up', type: 'prep' },
+        { item: 'Definir script de atendimento e qualificação de leads', type: 'strategy' },
       ]
     },
     {
       week: 'Semana 3-4',
-      title: 'Setup & Estruturação',
+      title: 'Lançamento Inicial',
       tasks: [
-        { item: 'Criar campanha Look-a-Like expandida (ABC + SP)', type: 'strategy' },
-        { item: 'Configurar Remarketing para não-convertidos', type: 'strategy' },
-        { item: 'Desenvolver criativos focados nas tipologias (54-133m²)', type: 'creative' },
-        { item: 'Definir novo geo-targeting (ABC, Mauá, SP Zona Sul)', type: 'strategy' },
-        { item: 'Montar planilha de CAC e projeções', type: 'strategy' },
-        { item: 'Compilar materiais da pasta do cliente', type: 'prep' },
+        { item: 'Iniciar campanhas Meta Ads (Facebook/Instagram)', type: 'execution' },
+        { item: 'Foco em leads locais (Ribeirão Pires, Mauá)', type: 'strategy' },
+        { item: 'Criativos: vídeo teaser e carrossel de plantas', type: 'creative' },
+        { item: 'Lookalike de base de leads existente', type: 'execution' },
+        { item: 'Segmentação por interesse: imóveis, financiamento, família', type: 'execution' },
+        { item: 'Monitorar CPL inicial e taxa de qualificação', type: 'analysis' },
       ]
     },
     {
       week: 'Semana 5-6',
-      title: 'Lançamento & Otimização',
+      title: 'Escala e Diversificação',
       tasks: [
-        { item: 'Ativar campanhas Look-a-Like em Meta Ads', type: 'execution' },
-        { item: 'Ativar Google Search para "apartamento alto padrão ABC"', type: 'execution' },
-        { item: 'Configurar segmentação por renda (R$20k+)', type: 'execution' },
-        { item: 'Setup de remarketing cross-platform', type: 'execution' },
-        { item: 'Criar variações de criativos A/B', type: 'creative' },
-        { item: 'Monitorar CPL e CAC inicial', type: 'analysis' },
+        { item: 'Expandir geo para ABC + Zona Sul SP', type: 'strategy' },
+        { item: 'Testar Google Ads (search "apartamento Ribeirão Pires")', type: 'execution' },
+        { item: 'Remarketing para visitantes da LP que não converteram', type: 'execution' },
+        { item: 'Análise de CPL por público e otimização de criativos', type: 'analysis' },
+        { item: 'Testes A/B de headlines e CTAs', type: 'creative' },
+        { item: 'Ajustar segmentação por renda (R$8k-15k)', type: 'optimization' },
       ]
     },
     {
       week: 'Semana 7-8',
-      title: 'Ajustes & Expansão',
+      title: 'Otimização e Conteúdo',
       tasks: [
-        { item: 'Analisar dados de conversão das primeiras 4 semanas', type: 'analysis' },
-        { item: 'Ajustar lances e orçamento por região', type: 'optimization' },
-        { item: 'Expandir públicos de melhor performance', type: 'optimization' },
+        { item: 'Ajustar públicos com base em dados de CPL', type: 'optimization' },
+        { item: 'Produzir depoimentos e provas sociais (early-adopters)', type: 'creative' },
+        { item: 'Criar conteúdo educativo (posts sobre financiamento MCMV/SBPE)', type: 'creative' },
+        { item: 'Stories e Reels para engajamento orgânico', type: 'creative' },
         { item: 'Pausar segmentos de baixo ROI', type: 'optimization' },
-        { item: 'Criar novos criativos baseados em insights', type: 'creative' },
-        { item: 'Implementar testes de copy', type: 'creative' },
+        { item: 'Expandir públicos de melhor performance', type: 'optimization' },
       ]
     },
     {
       week: 'Semana 9-10',
-      title: 'Scale & Performance',
+      title: 'Aceleração Pré-Lançamento',
       tasks: [
+        { item: 'Intensificar ads com senso de urgência ("condição de lançamento")', type: 'execution' },
+        { item: 'Parcerias locais: corretores, imobiliárias, influenciadores', type: 'strategy' },
+        { item: 'E-mail marketing para base de leads "quentes"', type: 'execution' },
+        { item: 'Preparação do stand/showroom (se aplicável)', type: 'prep' },
         { item: 'Aumentar budget em campanhas de alta conversão', type: 'optimization' },
-        { item: 'Testar novos formatos de anúncio (Reels, Stories)', type: 'creative' },
-        { item: 'Implementar retargeting agressivo', type: 'execution' },
-        { item: 'Criar landing page específica para ABC', type: 'strategy' },
-        { item: 'Análise de concorrentes ativos no período', type: 'analysis' },
-        { item: 'Report executivo para cliente', type: 'reporting' },
+        { item: 'Criar urgência: "últimas unidades com desconto"', type: 'creative' },
       ]
     },
     {
       week: 'Semana 11-12',
-      title: 'Consolidação & Sprint Final',
+      title: 'Evento de Lançamento',
       tasks: [
-        { item: 'Revisão completa de todas as métricas', type: 'analysis' },
-        { item: 'Ajustes finais de otimização', type: 'optimization' },
-        { item: 'Preparar relatório final com projeções', type: 'reporting' },
+        { item: 'Evento presencial ou live de lançamento', type: 'execution' },
+        { item: 'Oferta especial de lançamento (bônus, desconto na entrada)', type: 'strategy' },
+        { item: 'Cobertura em tempo real (stories, vídeos)', type: 'creative' },
+        { item: 'Report e análise de resultados das 12 semanas', type: 'reporting' },
         { item: 'Documentar learnings e best practices', type: 'reporting' },
-        { item: 'Planejar estratégia para próximos 3 meses', type: 'strategy' },
-        { item: 'Apresentação de resultados e recomendações', type: 'reporting' },
+        { item: 'Planejar estratégia para os próximos 3 meses', type: 'strategy' },
       ]
     },
   ]
@@ -406,8 +364,8 @@ export default function AyaUrbanLanding() {
               <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
                 Documento executivo desenvolvido pela <strong className="text-orange-600">Agência RPK</strong> para o
                 <strong> AYA Urban</strong> em Ribeirão Pires/SP. Empreendimento com <strong>60 unidades</strong> de
-                <strong> 54m² a 133m²</strong>, incluindo <strong>4 coberturas duplex</strong>.
-                Previsão de entrega: <strong>Outubro/2029</strong>.
+                <strong> 54m² a 133m²</strong>, ticket médio até <strong>R$ 600 mil</strong>.
+                Entrega: <strong>Outubro/2029</strong>. Incorporação: <strong>Wind/RAP</strong>.
               </p>
             </motion.div>
             <motion.div
@@ -457,27 +415,27 @@ export default function AyaUrbanLanding() {
               />
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm font-medium text-white/60">INVESTIMENTO MÉDIO</span>
+                  <span className="text-sm font-medium text-white/60">TICKET MÉDIO</span>
                   <DollarSign className="h-8 w-8 text-orange-500" />
                 </div>
-                <p className="text-5xl md:text-6xl font-black mb-2">R$ 550 mil</p>
-                <p className="text-lg text-white/60 mb-4">Preço médio das unidades</p>
+                <p className="text-5xl md:text-6xl font-black mb-2">até R$ 600k</p>
+                <p className="text-lg text-white/60 mb-4">Financiamento SBPE ou MCMV Faixa 3</p>
                 <div className="grid grid-cols-2 gap-3 mt-4">
                   <div className="bg-white/10 rounded-xl p-3 text-center">
                     <p className="text-2xl font-black text-orange-400">R$ 8.938</p>
-                    <p className="text-xs text-white/60">Preço/m²</p>
+                    <p className="text-xs text-white/60">Preço/m² médio</p>
                   </div>
                   <div className="bg-white/10 rounded-xl p-3 text-center">
-                    <p className="text-2xl font-black text-green-400">+7%</p>
-                    <p className="text-xs text-white/60">vs Sto André</p>
+                    <p className="text-2xl font-black text-green-400">-35%</p>
+                    <p className="text-xs text-white/60">Ticket vs Resort</p>
                   </div>
                 </div>
                 <div className="mt-4 pt-4 border-t border-white/10">
-                  <p className="text-xs text-white/50 mb-2">TIPOLOGIAS DISPONÍVEIS</p>
+                  <p className="text-xs text-white/50 mb-2">TIPOLOGIAS (2 e 3 DORMS)</p>
                   <div className="flex flex-wrap gap-2">
-                    <span className="text-xs bg-white/10 px-2 py-1 rounded">54m²</span>
-                    <span className="text-xs bg-white/10 px-2 py-1 rounded">60m²</span>
-                    <span className="text-xs bg-white/10 px-2 py-1 rounded">69m²</span>
+                    <span className="text-xs bg-white/10 px-2 py-1 rounded">54,3m²</span>
+                    <span className="text-xs bg-white/10 px-2 py-1 rounded">60,8m²</span>
+                    <span className="text-xs bg-white/10 px-2 py-1 rounded">69,5m²</span>
                     <span className="text-xs bg-orange-500/30 px-2 py-1 rounded">133m² Duplex</span>
                   </div>
                 </div>
@@ -537,8 +495,8 @@ export default function AyaUrbanLanding() {
                   <AlertCircle className="h-6 w-6 text-red-600" />
                 </motion.div>
               </div>
-              <p className="text-4xl font-black text-red-600 mb-1">360-540</p>
-              <p className="text-sm text-red-700">famílias qualificadas</p>
+              <p className="text-4xl font-black text-red-600 mb-1">4-7 mil</p>
+              <p className="text-sm text-red-700">famílias c/ renda ≥R$8k</p>
             </motion.div>
 
             {/* Entrega */}
@@ -865,9 +823,9 @@ export default function AyaUrbanLanding() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {[
               { value: '119 mil', label: 'População', sub: '-4.6% em 5 anos', color: 'gray' },
-              { value: 'R$ 3,9 bi', label: 'PIB', sub: 'R$31k p/capita', color: 'orange' },
-              { value: 'R$ 3.000', label: 'Salário', sub: 'vs R$3.900 SP', color: 'red' },
-              { value: '36 mil', label: 'Domicílios', sub: '~3.3 pessoas/dom', color: 'gray' },
+              { value: 'R$ 3,9 bi', label: 'PIB', sub: 'R$33k p/capita', color: 'orange' },
+              { value: 'R$ 3.054', label: 'Salário', sub: 'vs R$3.900 SP', color: 'red' },
+              { value: '~40 mil', label: 'Domicílios', sub: '~3 pessoas/dom', color: 'gray' },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -992,24 +950,56 @@ export default function AyaUrbanLanding() {
             </Card>
           </div>
 
+          {/* Diferenciais da Localização */}
+          <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white mb-6">
+            <CardHeader>
+              <div className="flex items-center gap-3 mb-2">
+                <MapPin className="h-6 w-6 text-blue-600" />
+                <CardTitle className="text-blue-900">Diferenciais da Localização - Bairro Pastoril</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-4 gap-4">
+                {[
+                  { icon: '🚂', titulo: 'Estação CPTM', desc: 'Linha 10-Turquesa', detalhe: '~1h30 até SP via trem' },
+                  { icon: '🏥', titulo: 'Hospital', desc: 'Hospital e Maternidade RP', detalhe: 'Centro Alto - 100 leitos' },
+                  { icon: '🏪', titulo: 'Comércio', desc: 'Shopping Duaik, Compre Bem', detalhe: 'Centro a poucos minutos' },
+                  { icon: '🎓', titulo: 'Educação', desc: 'FIRP/UNIESP', detalhe: 'Faculdade local' },
+                  { icon: '🚗', titulo: 'São Paulo', desc: '40-45 min de carro', detalhe: '39km de distância' },
+                  { icon: '🏢', titulo: 'ABC Paulista', desc: '20-30 min', detalhe: 'Santo André, Mauá' },
+                  { icon: '🏞️', titulo: 'Estância Turística', desc: 'Qualidade de vida', detalhe: 'IDH 0.784 (alto)' },
+                  { icon: '🚑', titulo: 'UPAs', desc: 'UPA Centro e Santa Luzia', detalhe: 'Atendimento 24h' },
+                ].map((item, i) => (
+                  <div key={i} className="bg-white rounded-xl p-4 border border-blue-100 text-center">
+                    <span className="text-2xl mb-2 block">{item.icon}</span>
+                    <p className="font-bold text-gray-900 text-sm">{item.titulo}</p>
+                    <p className="text-xs text-blue-700">{item.desc}</p>
+                    <p className="text-xs text-gray-500 mt-1">{item.detalhe}</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Alertas e Oportunidades */}
           <div className="grid md:grid-cols-2 gap-6">
-            <Card className="border-2 border-red-200 bg-gradient-to-br from-red-50 to-white">
+            <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-white">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-2">
-                  <AlertCircle className="h-6 w-6 text-red-600" />
-                  <CardTitle className="text-red-900">Alertas</CardTitle>
+                  <AlertCircle className="h-6 w-6 text-amber-600" />
+                  <CardTitle className="text-amber-900">Pontos de Atenção</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
                   {[
-                    '52.7% classes E+D',
-                    'Poupança -31.8%',
-                    'Crédito -42.9%',
+                    'Preço/m² 55% acima de Mauá',
+                    'Entrega apenas em Out/2029',
+                    'Concorrência com preços menores',
+                    'Necessidade de expansão geográfica',
                   ].map((alert, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-red-800">
-                      <div className="w-1.5 h-1.5 rounded-full bg-red-600"></div>
+                    <li key={i} className="flex items-center gap-2 text-sm text-amber-800">
+                      <div className="w-1.5 h-1.5 rounded-full bg-amber-600"></div>
                       {alert}
                     </li>
                   ))}
@@ -1027,9 +1017,11 @@ export default function AyaUrbanLanding() {
               <CardContent>
                 <ul className="space-y-2">
                   {[
-                    '1º vertical alto padrão',
-                    'Só 1.85% em aptos',
-                    '50 min de SP',
+                    'Escassez de verticais em Ribeirão Pires',
+                    'Tipologias variadas (54m²-133m²)',
+                    'Preço acessível vs Santo André',
+                    'Acesso fácil ao ABC via CPTM',
+                    'Estância turística - qualidade de vida',
                   ].map((opp, i) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-green-800">
                       <div className="w-1.5 h-1.5 rounded-full bg-green-600"></div>
@@ -1043,9 +1035,9 @@ export default function AyaUrbanLanding() {
         </div>
       </section>
 
-      {/* PÚBLICO - INSIGHT CRÍTICO */}
+      {/* PÚBLICO - ANÁLISE DE MERCADO */}
       <section id="publico" className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-white to-orange-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-green-50"></div>
 
         <div className="max-w-7xl mx-auto px-6 relative">
           <motion.div
@@ -1054,41 +1046,40 @@ export default function AyaUrbanLanding() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-red-100 text-red-600 text-sm font-bold mb-4">
-              SEÇÃO 03 • CRÍTICO
+            <span className="inline-block px-4 py-2 rounded-full bg-orange-100 text-orange-600 text-sm font-bold mb-4">
+              SEÇÃO 03 • PÚBLICO-ALVO
             </span>
             <h2 className="text-5xl md:text-6xl font-black mb-4">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-green-600">
                 Público-Alvo
               </span>
             </h2>
-            <p className="text-xl text-gray-600">Mercado Local Insuficiente</p>
+            <p className="text-xl text-gray-600">Análise de Renda e Perfil do Comprador</p>
           </motion.div>
 
-          {/* Alert Card */}
-          <Card className="border-2 border-red-300 bg-gradient-to-br from-red-100 to-white mb-8">
+          {/* Cálculo de Renda Card */}
+          <Card className="border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-white mb-8">
             <CardContent className="p-8">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-red-200 flex items-center justify-center flex-shrink-0">
-                  <AlertCircle className="h-8 w-8 text-red-600" />
+                <div className="w-16 h-16 rounded-2xl bg-orange-200 flex items-center justify-center flex-shrink-0">
+                  <DollarSign className="h-8 w-8 text-orange-600" />
                 </div>
-                <div>
-                  <h3 className="text-2xl font-black text-red-900 mb-3">
-                    Mercado Local Insuficiente
+                <div className="flex-1">
+                  <h3 className="text-2xl font-black text-orange-900 mb-3">
+                    Perfil de Renda para o AYA Urban
                   </h3>
-                  <p className="text-lg text-red-800 mb-4">
-                    Renda necessária: <strong>R$18k-22k/mês</strong>. Apenas <strong>360-540 famílias</strong> locais qualificam.
-                    Entrada <strong>R$160k</strong> (20%) + parcela ~<strong>R$6k/mês</strong> (30% renda).
+                  <p className="text-lg text-orange-800 mb-4">
+                    Ticket até <strong>R$ 600.000</strong> • Renda familiar: <strong>R$ 8.000 - R$ 15.000/mês</strong> • Financiamento SBPE ou MCMV Faixa 3
                   </p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {[
-                      { value: '360-540', label: 'Famílias RP', color: 'red' },
-                      { value: 'R$ 160k', label: 'Entrada', color: 'gray' },
-                      { value: '~R$ 6k', label: 'Parcela', color: 'orange' },
-                      { value: '1-1.5%', label: 'População', color: 'gray' },
+                      { value: 'R$ 8-15k', label: 'Renda familiar/mês', color: 'orange' },
+                      { value: 'até R$ 600k', label: 'Ticket médio', color: 'gray' },
+                      { value: 'SBPE', label: 'Financiamento', color: 'orange' },
+                      { value: 'MCMV F3', label: 'Alternativa', color: 'gray' },
                     ].map((stat, i) => (
-                      <div key={i} className="bg-white rounded-xl p-4 text-center">
-                        <p className={`text-2xl font-black ${stat.color === 'red' ? 'text-red-600' : stat.color === 'orange' ? 'text-orange-600' : 'text-gray-900'}`}>
+                      <div key={i} className="bg-white rounded-xl p-4 text-center border border-orange-100">
+                        <p className={`text-2xl font-black ${stat.color === 'orange' ? 'text-orange-600' : 'text-gray-900'}`}>
                           {stat.value}
                         </p>
                         <p className="text-xs text-gray-600 mt-1">{stat.label}</p>
@@ -1100,71 +1091,128 @@ export default function AyaUrbanLanding() {
             </CardContent>
           </Card>
 
-          {/* Solution Card */}
-          <Card className="border-2 border-orange-300 bg-gradient-to-br from-orange-100 to-white">
+          {/* Público Qualificado */}
+          <Card className="border-2 border-green-300 bg-gradient-to-br from-green-50 to-white mb-8">
             <CardContent className="p-8">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-orange-200 flex items-center justify-center flex-shrink-0">
-                  <Target className="h-8 w-8 text-orange-600" />
+                <div className="w-16 h-16 rounded-2xl bg-green-200 flex items-center justify-center flex-shrink-0">
+                  <Users className="h-8 w-8 text-green-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-black text-orange-900 mb-3">
-                    Expansão Geográfica Obrigatória
+                  <h3 className="text-2xl font-black text-green-900 mb-3">
+                    Núcleos Familiares Compatíveis em Ribeirão Pires
                   </h3>
-                  <p className="text-lg text-orange-800 mb-6">
-                    <strong>ABC + SP Capital = solução.</strong> Foco em famílias de classe A/B que buscam qualidade de vida com preço acessível.
+                  <p className="text-lg text-green-800 mb-4">
+                    Com <strong>~40.000 domicílios</strong> e <strong>10-18% com renda ≥ R$ 8.000/mês</strong>, estimamos:
                   </p>
-
-                  {/* Personas Grid */}
-                  <div className="grid md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                     {[
-                      { title: 'Executivo ABC', traits: ['Trabalha ABC', 'R$20k-35k/mês', 'Busca qualidade'], icon: Briefcase, color: 'orange' },
-                      { title: 'Lifestyle Migrator', traits: ['Mora SP', 'Remote work', 'Busca natureza'], icon: Mountain, color: 'green' },
-                      { title: 'Investidor', traits: ['Valorização', '1º vertical', 'Diversificação'], icon: TrendingUp, color: 'blue' },
-                    ].map((persona, i) => (
-                      <div key={i} className="bg-white rounded-xl p-4 border border-gray-200">
-                        <div className={`w-10 h-10 rounded-xl bg-${persona.color}-100 flex items-center justify-center mb-3`}>
-                          <persona.icon className={`h-5 w-5 text-${persona.color}-600`} />
-                        </div>
-                        <h4 className="font-bold text-gray-900 mb-2">{persona.title}</h4>
-                        <ul className="space-y-1">
-                          {persona.traits.map((trait, j) => (
-                            <li key={j} className="text-xs text-gray-600 flex items-center gap-1">
-                              <div className="w-1 h-1 rounded-full bg-gray-400"></div>
-                              {trait}
-                            </li>
-                          ))}
-                        </ul>
+                      { value: '~4.000', label: 'Faixa conservadora (10%)', color: 'green' },
+                      { value: '~7.200', label: 'Faixa otimista (18%)', color: 'green' },
+                      { value: '~R$ 3.054', label: 'Salário médio local', color: 'gray' },
+                      { value: '~40 mil', label: 'Domicílios RP', color: 'gray' },
+                    ].map((stat, i) => (
+                      <div key={i} className="bg-white rounded-xl p-4 text-center border border-green-100">
+                        <p className={`text-2xl font-black ${stat.color === 'green' ? 'text-green-600' : 'text-gray-900'}`}>
+                          {stat.value}
+                        </p>
+                        <p className="text-xs text-gray-600 mt-1">{stat.label}</p>
                       </div>
                     ))}
+                  </div>
+                  <div className="bg-green-100 rounded-xl p-4 border border-green-200">
+                    <p className="text-sm text-green-900">
+                      <strong>Análise do PDF:</strong> A demanda potencial (4.000-7.200 famílias) supera em várias vezes a oferta de 60 unidades, indicando <strong>rápida absorção se o produto for bem posicionado</strong>. Mudanças na legislação municipal (2023) liberando construções verticais tendem a liberar essa demanda reprimida.
+                    </p>
                   </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Budget Suggestion */}
-          <div className="mt-8 bg-gray-50 rounded-3xl p-8 border border-gray-200">
-            <h3 className="text-xl font-black text-gray-900 mb-6 text-center">
-              Budget Sugerido (R$9k/mês)
-            </h3>
-            <div className="grid md:grid-cols-3 gap-4">
-              {[
-                { tipo: 'Tráfego Frio', valor: 5400, pct: 60, color: 'orange' },
-                { tipo: 'Remarketing', valor: 2700, pct: 30, color: 'blue' },
-                { tipo: 'Lookalike', valor: 900, pct: 10, color: 'green' },
-              ].map((item, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 text-center">
-                  <p className="text-sm text-gray-600 mb-2">{item.tipo}</p>
-                  <p className="text-3xl font-black text-gray-900 mb-1">R$ {item.valor.toLocaleString()}</p>
-                  <p className={`text-lg font-bold text-${item.color}-600 mb-3`}>{item.pct}%</p>
-                  <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                    <div className={`h-full bg-${item.color}-500 rounded-full`} style={{ width: `${item.pct}%` }}></div>
+          {/* Personas Grid */}
+          <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">Personas do AYA Urban</h3>
+          <div className="grid md:grid-cols-4 gap-4 mb-8">
+            {[
+              {
+                title: 'Casal Jovem',
+                traits: ['25-35 anos', 'Renda R$14-20k', 'Primeiro imóvel', '2 dorms ideal'],
+                icon: Users,
+                color: 'orange',
+                desc: 'Busca sair do aluguel, valoriza localização e preço acessível'
+              },
+              {
+                title: 'Família em Crescimento',
+                traits: ['30-45 anos', 'Renda R$18-25k', '1-2 filhos', '3 dorms preferido'],
+                icon: Home,
+                color: 'blue',
+                desc: 'Busca mais espaço, escola próxima e área de lazer'
+              },
+              {
+                title: 'Profissional ABC',
+                traits: ['28-40 anos', 'Trabalha no ABC', 'Home office parcial', 'Busca qualidade'],
+                icon: Briefcase,
+                color: 'green',
+                desc: 'Foge do trânsito de SP, valoriza natureza e custo-benefício'
+              },
+              {
+                title: 'Investidor',
+                traits: ['35-55 anos', 'Renda R$20k+', 'Diversificação', 'Potencial aluguel'],
+                icon: TrendingUp,
+                color: 'purple',
+                desc: 'Busca valorização em região em desenvolvimento'
+              },
+            ].map((persona, i) => (
+              <Card key={i} className={`border-2 border-${persona.color}-200 hover:border-${persona.color}-400 transition-all hover-lift`}>
+                <CardContent className="p-5">
+                  <div className={`w-12 h-12 rounded-xl bg-${persona.color}-100 flex items-center justify-center mb-3`}>
+                    <persona.icon className={`h-6 w-6 text-${persona.color}-600`} />
                   </div>
-                </div>
-              ))}
-            </div>
+                  <h4 className="font-bold text-gray-900 mb-2">{persona.title}</h4>
+                  <ul className="space-y-1 mb-3">
+                    {persona.traits.map((trait, j) => (
+                      <li key={j} className="text-xs text-gray-600 flex items-center gap-1">
+                        <div className={`w-1.5 h-1.5 rounded-full bg-${persona.color}-400`}></div>
+                        {trait}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-xs text-gray-500 italic">{persona.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
+
+          {/* Expansão Geográfica */}
+          <Card className="border-2 border-gray-200 bg-gradient-to-br from-gray-50 to-white">
+            <CardContent className="p-8">
+              <h3 className="text-xl font-black text-gray-900 mb-4 flex items-center gap-2">
+                <Target className="h-6 w-6 text-orange-600" />
+                Estratégia de Expansão Geográfica
+              </h3>
+              <p className="text-gray-700 mb-6">
+                Além de Ribeirão Pires, recomenda-se campanha em regiões próximas com público qualificado:
+              </p>
+              <div className="grid md:grid-cols-5 gap-4">
+                {[
+                  { cidade: 'Ribeirão Pires', familias: '~5.100', prioridade: 'Alta', cor: 'orange' },
+                  { cidade: 'Mauá', familias: '~12.000', prioridade: 'Alta', cor: 'orange' },
+                  { cidade: 'Santo André', familias: '~45.000', prioridade: 'Média', cor: 'blue' },
+                  { cidade: 'São Bernardo', familias: '~55.000', prioridade: 'Média', cor: 'blue' },
+                  { cidade: 'SP Zona Leste', familias: '~80.000', prioridade: 'Explorar', cor: 'gray' },
+                ].map((item, i) => (
+                  <div key={i} className={`p-4 rounded-xl border-2 border-${item.cor}-200 bg-${item.cor}-50 text-center`}>
+                    <p className="font-bold text-gray-900 text-sm">{item.cidade}</p>
+                    <p className={`text-xl font-black text-${item.cor}-600`}>{item.familias}</p>
+                    <p className="text-xs text-gray-500">Classes A+B</p>
+                    <span className={`text-xs px-2 py-0.5 rounded-full bg-${item.cor}-200 text-${item.cor}-800 mt-2 inline-block`}>
+                      {item.prioridade}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -1219,25 +1267,25 @@ export default function AyaUrbanLanding() {
                   </motion.tr>
                   {[
                     // RIBEIRÃO PIRES - Concorrentes diretos (mesmo segmento 50-70m²)
-                    { name: 'Residencial Duetto', construtora: 'A definir', local: 'Ribeirão Pires', area: '40-57m²', price: 'R$242k-378k', priceM2: 'R$ 6.400', date: '2025', link: '#' },
-                    { name: 'Centro Alto 58m²', construtora: 'A definir', local: 'Ribeirão Pires', area: '58-60m²', price: '~R$ 440k', priceM2: 'R$ 7.333', date: '2027', link: '#' },
+                    { name: 'Residencial Duetto', construtora: 'Toth Construtora', local: 'Ribeirão Pires', area: '40-57m²', price: 'R$242k-378k', priceM2: 'R$ 6.400', date: '2025', link: 'https://tothconstrutora.com.br/' },
+                    { name: 'Residencial Áquila', construtora: 'FBonano Engenharia', local: 'Ribeirão Pires', area: '58-60m²', price: '~R$ 440k', priceM2: 'R$ 7.350', date: '2027', link: 'https://fbonanoengenharia.com.br/' },
 
                     // MAUÁ - Concorrentes diretos (mesmo segmento)
-                    { name: 'Vila Bocaina', construtora: 'SAMAX', local: 'Mauá', area: '64m²', price: 'R$ 359k', priceM2: 'R$ 5.609', date: '2026', link: '#' },
-                    { name: 'Mont Blanc', construtora: 'A definir', local: 'Mauá', area: '2-3 dorms', price: 'A partir R$310k', priceM2: 'R$ 5.500', date: '2026', link: '#' },
-                    { name: 'Paulo Makoto', construtora: 'Paulo Makoto', local: 'Mauá', area: '55-58m²', price: '~R$ 350k', priceM2: 'R$ 6.200', date: '2025', link: '#' },
+                    { name: 'Vila Bocaina', construtora: 'SAMAX', local: 'Mauá', area: '64m²', price: 'R$ 359k', priceM2: 'R$ 5.609', date: '2026', link: 'https://www.agenteimovel.com.br/' },
+                    { name: 'Mont Blanc', construtora: 'A definir', local: 'Mauá', area: '2-3 dorms', price: 'A partir R$310k', priceM2: 'R$ 5.500', date: '2026', link: 'https://loft.com.br/' },
+                    { name: 'Paulo Makoto', construtora: 'Paulo Makoto', local: 'Mauá', area: '55-58m²', price: '~R$ 350k', priceM2: 'R$ 6.200', date: '2025', link: 'https://www.abcimovel.com.br/' },
 
                     // SUZANO - Concorrentes diretos
-                    { name: 'Parque das Flores', construtora: 'A definir', local: 'Suzano', area: '65-75m²', price: 'R$ 288k', priceM2: 'R$ 4.431', date: '2025', link: '#' },
-                    { name: 'Sou Mais Suzano', construtora: 'A definir', local: 'Suzano', area: '46-48m²', price: 'MCMV', priceM2: 'R$ 4.800', date: '2025', link: '#' },
+                    { name: 'Parque das Flores', construtora: 'A definir', local: 'Suzano', area: '65-75m²', price: 'R$ 288k', priceM2: 'R$ 4.431', date: '2025', link: 'https://loft.com.br/' },
+                    { name: 'Sou Mais Suzano', construtora: 'MRV', local: 'Suzano', area: '46-48m²', price: 'MCMV', priceM2: 'R$ 4.800', date: '2025', link: 'https://www.mrv.com.br/' },
 
                     // SANTO ANDRÉ - Mesmo segmento (50-70m², 2-3 dorms)
-                    { name: 'Vision Campestre', construtora: 'Econ', local: 'Sto André', area: '43-67m²', price: 'A partir R$367k', priceM2: 'R$ 6.672', date: '10/2026', link: '#' },
-                    { name: 'Motiró Casa Branca', construtora: 'Jacy/Motiró', local: 'Sto André', area: '57-90m²', price: 'R$473k-807k', priceM2: 'R$ 8.345', date: '02/2028', link: '#' },
-                    { name: 'Jump by Motiró', construtora: 'Jacy/Motiró', local: 'Sto André', area: 'Variadas', price: 'Consultar', priceM2: 'R$ 9.000', date: '07/2025', link: '#' },
+                    { name: 'Vision Campestre', construtora: 'Econ', local: 'Sto André', area: '43-67m²', price: 'A partir R$367k', priceM2: 'R$ 6.672', date: '10/2026', link: 'https://www.construtorapatriani.com.br/' },
+                    { name: 'Motiró Casa Branca', construtora: 'Jacy/Motiró', local: 'Sto André', area: '57-90m²', price: 'R$473k-807k', priceM2: 'R$ 8.345', date: '02/2028', link: 'https://casabranca.bymotiro.com.br/' },
+                    { name: 'Jump by Motiró', construtora: 'Jacy/Motiró', local: 'Sto André', area: 'Variadas', price: 'Consultar', priceM2: 'R$ 9.000', date: '07/2025', link: 'https://grupomotiro.com.br/' },
 
                     // SÃO BERNARDO DO CAMPO - Mesmo segmento
-                    { name: 'Média SBC 2 dorms', construtora: 'Diversos', local: 'S. Bernardo', area: '~70m²', price: '~R$ 370k', priceM2: 'R$ 7.952', date: 'Vários', link: '#' },
+                    { name: 'Média SBC 2 dorms', construtora: 'Diversos', local: 'S. Bernardo', area: '~70m²', price: '~R$ 370k', priceM2: 'R$ 7.952', date: 'Vários', link: 'https://loft.com.br/' },
                   ].map((comp, i) => (
                     <motion.tr
                       key={i}
@@ -1394,16 +1442,16 @@ export default function AyaUrbanLanding() {
                 <CardContent>
                   <ul className="space-y-3">
                     {[
-                      { text: 'Pioneirismo: 1º empreendimento vertical alto padrão em Ribeirão Pires', strong: true },
-                      { text: '31 itens de lazer - conceito resort único na região', strong: true },
-                      { text: 'Preço/m² competitivo (R$ 8.420) - 35% mais acessível que lançamentos alto padrão Santo André', strong: true },
-                      { text: 'Metragem ampla (114m²) - acima da média regional (70-80m²)', strong: false },
-                      { text: 'Diferenciais exclusivos: Beach Arena, Pet Place, Smart Home, Energia Solar', strong: true },
-                      { text: 'Localização estratégica: 50 min de SP, próximo a natureza', strong: false },
-                      { text: 'Construtora WIND com histórico sólido no mercado', strong: false },
-                      { text: 'Infraestrutura completa: 2 torres, elevadores, segurança 24h', strong: false },
-                      { text: 'Sustentabilidade: captação água chuva, energia solar, coleta seletiva', strong: true },
-                      { text: 'Tecnologia: Smart Home, Wi-Fi, carregadores elétricos', strong: false },
+                      { text: 'Localização Premium: Centro de RP, próximo a comércio, escolas, hospital e estação de trem', strong: true },
+                      { text: 'Produto Versátil: 2-3 dorms (54-69m²) + coberturas duplex 133m² - atende diversos perfis', strong: true },
+                      { text: 'Qualidade Construtiva Wind/RAP: padrão elevado, lazer no térreo e cobertura (rooftop)', strong: true },
+                      { text: 'Exclusividade: apenas 60 unidades, torre única - ambiente familiar e baixa densidade', strong: true },
+                      { text: '64 vagas de garagem (suficientes + extras para visitantes), portaria 24h, segurança moderna', strong: false },
+                      { text: 'Flexibilidade de Pagamento: parcelamento longo durante obra, entrada facilitada, uso de FGTS', strong: false },
+                      { text: 'Gap de mercado: único produto "padrão bom" até R$ 600k na região central de RP', strong: true },
+                      { text: 'Melhor custo-benefício vs AYA Resort (preço mais acessível) e vs Áquila (lazer superior)', strong: false },
+                      { text: 'Demanda reprimida: lei de zoneamento 2023 liberou verticais, famílias aguardavam opções', strong: false },
+                      { text: 'Potencial de valorização: pioneirismo vertical tende a elevar preços significativamente', strong: true },
                     ].map((item, i) => (
                       <motion.li
                         key={i}
@@ -1444,15 +1492,15 @@ export default function AyaUrbanLanding() {
                 <CardContent>
                   <ul className="space-y-3">
                     {[
-                      { text: 'Público local limitado: apenas 360-540 famílias qualificadas em Ribeirão Pires', critical: true },
-                      { text: 'Marca nova sem histórico de vendas na região', critical: false },
-                      { text: 'Preço absoluto elevado (R$ 959k-962k) para economia local (salário médio R$ 3.000)', critical: true },
-                      { text: 'Dependência de público externo (ABC + SP) para atingir meta de vendas', critical: true },
-                      { text: 'Entrega em 2028 (longo prazo) pode reduzir urgência de compra', critical: false },
-                      { text: 'Localização em cidade com população em queda (-4,6% em 5 anos)', critical: false },
-                      { text: 'Baixa renda per capita local (R$ 31k/ano vs R$ 58k média SP)', critical: false },
-                      { text: 'Ausência de grandes empresas/empregos na região', critical: false },
-                      { text: 'Baixa oferta de concorrentes diretos em Ribeirão Pires (apenas 1 lançamento identificado)', critical: false },
+                      { text: 'Prazo de Entrega Longo: 10/2029 (~4 anos) - risco de atrasos e mudanças econômicas', critical: true },
+                      { text: 'Pouco Histórico de Verticalização: público local não acostumado com apartamentos', critical: true },
+                      { text: 'Resistência cultural: muitos residem em casas/sobrados, preferem "quintal próprio"', critical: false },
+                      { text: 'Concorrência Interna: AYA Home Resort do mesmo grupo pode criar sobreposição de público', critical: false },
+                      { text: 'Marca Wind sem recall imediato: diferente de Helbor, MRV, Cyrela - desafio de credibilidade inicial', critical: true },
+                      { text: 'Áreas comuns mais compactas: torre única implica lazer menor que condomínios clube grandes', critical: false },
+                      { text: 'Salário médio local modesto (~R$ 3.054/mês) - público-alvo limitado em RP', critical: false },
+                      { text: 'Possível proximidade de via movimentada ou linha férrea - verificar ruído', critical: false },
+                      { text: 'Dependência de financiamento: maioria dos compradores precisará de crédito aprovado em 2029', critical: false },
                     ].map((item, i) => (
                       <motion.li
                         key={i}
@@ -1493,16 +1541,16 @@ export default function AyaUrbanLanding() {
                 <CardContent>
                   <ul className="space-y-3">
                     {[
-                      { text: 'Mercado ABC (15-20 min): 2,8M habitantes, renda alta, demanda consolidada', key: true },
-                      { text: 'Lifestyle Migrators de SP: busca por qualidade de vida + natureza + remote work', key: true },
-                      { text: 'Tendência de fuga urbana pós-pandemia (home office permanente)', key: true },
-                      { text: 'Demanda crescente por sustentabilidade e tecnologia em imóveis', key: false },
-                      { text: 'Mercado investidor: 1º vertical = potencial valorização exclusiva', key: true },
-                      { text: 'Ausência de concorrentes diretos com conceito resort em Ribeirão Pires', key: false },
-                      { text: 'Infraestrutura regional em desenvolvimento (Rodoanel, Linha 18-Bronze)', key: false },
-                      { text: 'Valorização imobiliária esperada com pioneirismo vertical', key: false },
-                      { text: 'Expansão geográfica de campanha (ABC + SP) viável com orçamento adequado', key: true },
-                      { text: 'Pet market crescente (45% dos lares brasileiros têm pets)', key: false },
+                      { text: 'Mercado Imobiliário Local em Expansão: lei de zoneamento 2023 liberou prédios mais altos', key: true },
+                      { text: 'Carência de Moradia Vertical de Médio Padrão: único na faixa até R$ 600k na região central', key: true },
+                      { text: 'Financiamento Favorável: tendência de queda da Selic barateia crédito até 2029', key: true },
+                      { text: 'Demanda potencial (4.000-7.200 famílias) supera em várias vezes a oferta de 60 unidades', key: true },
+                      { text: 'Capturar compradores de concorrentes: quem não fechou AYA Resort pelo preço, quem quer mais que Áquila', key: false },
+                      { text: 'Estância Turística: eventos (Festival do Chocolate, Natal Encantado) valorizam a cidade', key: false },
+                      { text: 'Parcerias públicas: prefeitura investindo em infraestrutura turística e revitalização do centro', key: false },
+                      { text: 'Diferenciais Sustentáveis: energia solar, tomadas para carros elétricos podem destacar vs concorrência', key: false },
+                      { text: 'Valorização até entrega: comum ganhos de 20%+ do lançamento à obra pronta', key: true },
+                      { text: 'Atrair moradores do ABC/SP que buscam custo-benefício e estilo de vida mais tranquilo', key: false },
                     ].map((item, i) => (
                       <motion.li
                         key={i}
@@ -1543,16 +1591,16 @@ export default function AyaUrbanLanding() {
                 <CardContent>
                   <ul className="space-y-3">
                     {[
-                      { text: 'Concorrentes em Mauá e ABC competindo pelo mesmo público regional', high: true },
-                      { text: 'Patriani (Santo André) com marca forte e produto premium consolidado', high: true },
-                      { text: 'Lançamentos de grandes construtoras em Mauá e ABC com verba robusta', high: true },
-                      { text: 'Crise econômica e alta de juros pode reduzir poder de compra', high: false },
-                      { text: 'Resistência do público ABC em considerar Ribeirão Pires (percepção de "longe")', high: true },
-                      { text: 'População local em queda (-4,6%) pode agravar escassez de público', high: false },
-                      { text: 'Residencial Vértice (Toth) com preço/m² inferior (R$ 6.140) atrai público preço-sensível', high: false },
-                      { text: 'Entrega 2028: concorrentes com entrega 2025-2026 têm vantagem temporal', high: false },
-                      { text: 'Budget limitado vs grandes players pode limitar alcance de campanha', high: false },
-                      { text: 'Mudanças regulatórias ou ambientais podem atrasar obra', high: false },
+                      { text: 'Novos Concorrentes no Curto Prazo: sucesso do AYA Home Resort demonstra mercado e pode atrair competição', high: true },
+                      { text: 'Instabilidade Econômica: alta de juros além do previsto ou inflação descontrolada podem frear compras', high: true },
+                      { text: 'Atrasos ou Custos de Obra: 4 anos sujeitos a riscos de insumos - atrasos minam confiança', high: true },
+                      { text: 'Resistência Cultural: parte da população de RP ainda prefere casas a apartamentos', high: true },
+                      { text: 'Saturação de Crédito: público elegível pode já estar comprometido com outros financiamentos', high: true },
+                      { text: 'Recessão pode estagnar empregos e renda local, reduzindo capacidade de compra', high: false },
+                      { text: 'Mudanças no programa MCMV ou condições SBPE podem afetar elegibilidade dos compradores', high: false },
+                      { text: 'Percepção de segurança: eventual aumento de criminalidade na região central prejudica imagem', high: false },
+                      { text: 'Concorrentes com entrega mais próxima (2025-2027) captam clientes impacientes', high: false },
+                      { text: 'Outras incorporadoras perceberam potencial de RP e podem lançar projetos similares', high: false },
                     ].map((item, i) => (
                       <motion.li
                         key={i}
@@ -1595,15 +1643,15 @@ export default function AyaUrbanLanding() {
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-green-600 mt-2 flex-shrink-0"></div>
-                        <span><strong>Campanha ABC + SP:</strong> Focar em Lifestyle Migrators e Executivos ABC que buscam qualidade de vida</span>
+                        <span><strong>Gap de mercado:</strong> Único produto médio padrão até R$ 600k no centro de RP - posicionamento único</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-green-600 mt-2 flex-shrink-0"></div>
-                        <span><strong>Diferenciação:</strong> Destacar 31 itens resort e pioneirismo vertical como USPs principais</span>
+                        <span><strong>Tipologias versáteis:</strong> 2-3 dorms (54-69m²) + coberturas 133m² atende diversos perfis familiares</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-green-600 mt-2 flex-shrink-0"></div>
-                        <span><strong>Investidor:</strong> Posicionar como oportunidade única de valorização (1º vertical da região)</span>
+                        <span><strong>Valorização na planta:</strong> Histórico de ganhos de 20%+ até entrega - investidores atentos</span>
                       </li>
                     </ul>
                   </div>
@@ -1615,15 +1663,15 @@ export default function AyaUrbanLanding() {
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-red-600 mt-2 flex-shrink-0"></div>
-                        <span><strong>Expansão Geográfica OBRIGATÓRIA:</strong> 80% do budget em ABC + SP Capital</span>
+                        <span><strong>Construir marca Wind:</strong> Cases de sucesso, parceria RAP, certificações e depoimentos de compradores</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-red-600 mt-2 flex-shrink-0"></div>
-                        <span><strong>Combat Objections:</strong> Criar conteúdo sobre "por que Ribeirão Pires?" (natureza + preço + acesso)</span>
+                        <span><strong>Educar sobre vertical:</strong> Conteúdo sobre benefícios de apartamento vs casa (segurança, praticidade)</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-red-600 mt-2 flex-shrink-0"></div>
-                        <span><strong>Diferenciação vs ABC:</strong> Enfatizar resort lifestyle e preço/m² 35% menor que lançamentos Santo André</span>
+                        <span><strong>Condições flexíveis:</strong> Parcelar entrada, facilitar financiamento MCMV/SBPE, assessoria completa</span>
                       </li>
                     </ul>
                   </div>
@@ -1654,7 +1702,7 @@ export default function AyaUrbanLanding() {
             <p className="text-xl text-gray-600">Perfil detalhado, comportamento e chamadas publicitárias</p>
           </motion.div>
 
-          {/* Persona 1: Executivo ABC */}
+          {/* Persona 1: Casal Jovem */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1665,11 +1713,11 @@ export default function AyaUrbanLanding() {
               <CardHeader className="bg-gradient-to-r from-orange-600 to-orange-500 text-white">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                    <Briefcase className="h-8 w-8 text-white" />
+                    <Heart className="h-8 w-8 text-white" />
                   </div>
                   <div>
-                    <CardTitle className="text-2xl text-white">Persona 1: Executivo ABC</CardTitle>
-                    <CardDescription className="text-orange-100">Carlos, 38 anos, Gerente Comercial</CardDescription>
+                    <CardTitle className="text-2xl text-white">Persona 1: Casal Jovem</CardTitle>
+                    <CardDescription className="text-orange-100">Lucas e Marina, 28-35 anos</CardDescription>
                   </div>
                 </div>
               </CardHeader>
@@ -1682,12 +1730,12 @@ export default function AyaUrbanLanding() {
                       Demografia & Perfil
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-700">
-                      <li><strong>Idade:</strong> 35-45 anos</li>
-                      <li><strong>Renda:</strong> R$ 20k-35k/mês</li>
-                      <li><strong>Família:</strong> Casado, 1-2 filhos (5-12 anos)</li>
-                      <li><strong>Trabalho:</strong> Gerente/Diretor em empresas do ABC (Santo André, São Bernardo, São Caetano)</li>
-                      <li><strong>Localização Atual:</strong> Mora em apartamento no ABC (70-80m²)</li>
-                      <li><strong>Valores:</strong> Qualidade de vida, segurança, conforto, status moderado</li>
+                      <li><strong>Idade:</strong> 28-35 anos</li>
+                      <li><strong>Renda:</strong> R$ 10k-14k/mês combinada</li>
+                      <li><strong>Família:</strong> Casal sem filhos ou com bebê a caminho</li>
+                      <li><strong>Trabalho:</strong> Técnicos ou analistas em indústrias do ABC ou comércio local</li>
+                      <li><strong>Localização Atual:</strong> Aluguel em Ribeirão Pires ou cidades vizinhas</li>
+                      <li><strong>Valores:</strong> Estabilidade, construir patrimônio, planejar o futuro</li>
                     </ul>
                   </div>
 
@@ -1700,23 +1748,23 @@ export default function AyaUrbanLanding() {
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Apartamento atual pequeno demais para família crescente</span>
+                        <span>Aluguel consome parte significativa da renda sem construir patrimônio</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Áreas de lazer limitadas ou inexistentes no condomínio</span>
+                        <span>Dificuldade de juntar entrada para financiamento</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Preços elevados em lançamentos alto padrão Santo André/SBC (R$ 11k-13k/m²)</span>
+                        <span>Receio de não conseguir pagar parcelas a longo prazo</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Falta de contato com natureza no dia a dia</span>
+                        <span>Incerteza sobre mercado imobiliário e momento certo de comprar</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Trânsito caótico e estresse urbano constante</span>
+                        <span>Falta de opções de qualidade na faixa de preço acessível</span>
                       </li>
                     </ul>
                   </div>
@@ -1732,23 +1780,23 @@ export default function AyaUrbanLanding() {
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Apartamento amplo (100m²+) para acomodar família confortavelmente</span>
+                        <span>Sair do aluguel e ter imóvel próprio para começar a vida</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Lazer completo no condomínio (piscina, academia, espaços para crianças)</span>
+                        <span>Apartamento com 2 dorms para possível família no futuro</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Preço justo e acessível sem sacrificar qualidade</span>
+                        <span>Parcelas que caibam no orçamento sem sufocar</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Proximidade ao trabalho (15-20 min de carro)</span>
+                        <span>Condomínio com lazer básico (piscina, churrasqueira)</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Ambiente mais tranquilo e verde para filhos crescerem</span>
+                        <span>Localização prática, perto do trabalho e transporte</span>
                       </li>
                     </ul>
                   </div>
@@ -1760,12 +1808,12 @@ export default function AyaUrbanLanding() {
                       Comportamento de Compra
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-700">
-                      <li><strong>Pesquisa:</strong> Ativo em portais (Imovelweb, VivaReal, ZAP)</li>
-                      <li><strong>Decisão:</strong> Racional, compara preço/m², localização, construtora</li>
-                      <li><strong>Tempo:</strong> 3-6 meses de pesquisa antes de decidir</li>
-                      <li><strong>Influência:</strong> Esposa é co-decisora (50/50)</li>
-                      <li><strong>Financiamento:</strong> 30-40% entrada + financiamento</li>
-                      <li><strong>Visita:</strong> Agenda visita nos finais de semana com família</li>
+                      <li><strong>Pesquisa:</strong> Instagram, portais imobiliários, indicações de amigos</li>
+                      <li><strong>Decisão:</strong> Emocional + racional, busca segurança e confiança</li>
+                      <li><strong>Tempo:</strong> 3-6 meses de pesquisa e simulações</li>
+                      <li><strong>Influência:</strong> Decisão conjunta do casal, consultam pais</li>
+                      <li><strong>Financiamento:</strong> MCMV Faixa 3 ou SBPE - até 80% financiado</li>
+                      <li><strong>Visita:</strong> Visitam decorado juntos, avaliam vizinhança</li>
                     </ul>
                   </div>
                 </div>
@@ -1774,16 +1822,16 @@ export default function AyaUrbanLanding() {
                 <div className="bg-gradient-to-r from-orange-100 to-orange-50 rounded-2xl p-6 border-2 border-orange-300">
                   <h4 className="font-black text-orange-900 mb-4 flex items-center gap-2 text-lg">
                     <Zap className="h-6 w-6 text-orange-600" />
-                    Chamadas Publicitárias para Executivo ABC
+                    Chamadas Publicitárias para Casal Jovem
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4">
                     {[
-                      { headline: '"114m² a 15 min do ABC. Sua família merece esse espaço."', format: 'Meta Ads - Feed' },
-                      { headline: '"35% mais barato que Santo André. Mesmo padrão, preço justo."', format: 'Google Ads - Search' },
-                      { headline: '"Resort a 20 min do seu trabalho. Lazer todo dia, não só férias."', format: 'Meta Ads - Stories' },
-                      { headline: '"Pioneiro em Ribeirão Pires: valorização garantida + qualidade de vida."', format: 'Google Display' },
-                      { headline: '"Piscina aquecida, cinema, pet place. Tudo que falta no seu prédio."', format: 'Meta Ads - Reels' },
-                      { headline: '"R$ 8.420/m² vs R$ 13k do ABC. Faça as contas."', format: 'LinkedIn Ads' },
+                      { headline: '"Seu primeiro apê no centro de Ribeirão Pires. A partir de R$ 350k."', format: 'Meta Ads - Feed' },
+                      { headline: '"Saia do aluguel! Parcelas a partir de R$ 2.800/mês."', format: 'Google Ads - Search' },
+                      { headline: '"2 dorms, lazer completo e entrada facilitada. Conheça o AYA Urban."', format: 'Meta Ads - Stories' },
+                      { headline: '"Financiamento MCMV ou SBPE. Assessoria gratuita para aprovação."', format: 'Google Display' },
+                      { headline: '"Casais jovens de RP estão trocando aluguel por patrimônio."', format: 'Meta Ads - Reels' },
+                      { headline: '"Perto do trabalho, do trem e da família. Seu lar no centro de RP."', format: 'Instagram Stories' },
                     ].map((ad, i) => (
                       <motion.div
                         key={i}
@@ -1804,7 +1852,7 @@ export default function AyaUrbanLanding() {
             </Card>
           </motion.div>
 
-          {/* Persona 2: Lifestyle Migrator */}
+          {/* Persona 2: Família com Filhos */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1815,11 +1863,11 @@ export default function AyaUrbanLanding() {
               <CardHeader className="bg-gradient-to-r from-green-600 to-green-500 text-white">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                    <Mountain className="h-8 w-8 text-white" />
+                    <Users className="h-8 w-8 text-white" />
                   </div>
                   <div>
-                    <CardTitle className="text-2xl text-white">Persona 2: Lifestyle Migrator</CardTitle>
-                    <CardDescription className="text-green-100">Julia, 32 anos, Designer UX (Remote)</CardDescription>
+                    <CardTitle className="text-2xl text-white">Persona 2: Família com Filhos</CardTitle>
+                    <CardDescription className="text-green-100">André e Cláudia, 35-45 anos</CardDescription>
                   </div>
                 </div>
               </CardHeader>
@@ -1832,12 +1880,12 @@ export default function AyaUrbanLanding() {
                       Demografia & Perfil
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-700">
-                      <li><strong>Idade:</strong> 28-38 anos</li>
-                      <li><strong>Renda:</strong> R$ 15k-28k/mês</li>
-                      <li><strong>Família:</strong> Solteiro(a) ou casal sem filhos / DINK (Double Income No Kids)</li>
-                      <li><strong>Trabalho:</strong> Remote work (Tech, Design, Marketing Digital)</li>
-                      <li><strong>Localização Atual:</strong> SP Capital (Vila Madalena, Pinheiros, Moema) em apto alugado</li>
-                      <li><strong>Valores:</strong> Qualidade de vida, natureza, sustentabilidade, lifestyle, bem-estar</li>
+                      <li><strong>Idade:</strong> 35-45 anos</li>
+                      <li><strong>Renda:</strong> R$ 12k-18k/mês combinada</li>
+                      <li><strong>Família:</strong> Casal com 1-2 filhos em idade escolar</li>
+                      <li><strong>Trabalho:</strong> Funcionários públicos, professores ou gerentes de empresas locais</li>
+                      <li><strong>Localização Atual:</strong> Casa ou apartamento pequeno em RP ou região</li>
+                      <li><strong>Valores:</strong> Segurança, educação dos filhos, qualidade de vida, conforto familiar</li>
                     </ul>
                   </div>
 
@@ -1850,23 +1898,23 @@ export default function AyaUrbanLanding() {
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Aluguel absurdo em SP (R$ 3k-5k/mês) sem construir patrimônio</span>
+                        <span>Imóvel atual não comporta mais a família que cresceu</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Poluição, barulho, caos urbano constante</span>
+                        <span>Falta de espaço de lazer seguro para as crianças</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Falta de áreas verdes, ar puro, contato com natureza</span>
+                        <span>Preocupação com segurança em casa antiga ou bairro afastado</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Custo de vida alto sem real qualidade de vida</span>
+                        <span>Deslocamento longo até escolas e serviços básicos</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Não precisa estar em SP (trabalha remoto) mas está "preso"</span>
+                        <span>Alto custo de manutenção de casa (IPTU, reformas, segurança)</span>
                       </li>
                     </ul>
                   </div>
@@ -1882,27 +1930,23 @@ export default function AyaUrbanLanding() {
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Comprar imóvel próprio e parar de jogar dinheiro fora com aluguel</span>
+                        <span>Apartamento com 3 dorms para cada filho ter seu quarto</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Morar em contato com natureza sem abrir mão de conforto urbano</span>
+                        <span>Condomínio com playground, piscina e áreas para crianças</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Espaço para home office confortável e inspirador</span>
+                        <span>Segurança 24h - portaria, câmeras, controle de acesso</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Coworking no prédio para networking e produtividade</span>
+                        <span>Próximo a escolas, hospital e comércio</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Lifestyle ativo: academia, piscina, espaços wellness</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Sustentabilidade: energia solar, coleta seletiva, horta</span>
+                        <span>Upgrade de padrão de vida sem sair de Ribeirão Pires</span>
                       </li>
                     </ul>
                   </div>
@@ -1914,12 +1958,12 @@ export default function AyaUrbanLanding() {
                       Comportamento de Compra
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-700">
-                      <li><strong>Pesquisa:</strong> Instagram, TikTok, Pinterest, blogs de lifestyle</li>
-                      <li><strong>Decisão:</strong> Emocional + aspiracional, busca "vibe" e identidade</li>
-                      <li><strong>Tempo:</strong> 2-4 meses, decisão rápida quando se identifica</li>
-                      <li><strong>Influência:</strong> Redes sociais, influencers, amigos que fizeram a migração</li>
-                      <li><strong>Financiamento:</strong> 20-30% entrada, busca condições flexíveis</li>
-                      <li><strong>Visita:</strong> Visita sozinho(a) ou com parceiro(a), busca "sentir" o lugar</li>
+                      <li><strong>Pesquisa:</strong> Grupos de Facebook locais, indicação de vizinhos/parentes</li>
+                      <li><strong>Decisão:</strong> Prática e funcional, foco em espaço e segurança</li>
+                      <li><strong>Tempo:</strong> 4-8 meses, pesquisa detalhada e comparação</li>
+                      <li><strong>Influência:</strong> Esposa tem voz forte na decisão final</li>
+                      <li><strong>Financiamento:</strong> Venda do imóvel atual + complemento SBPE</li>
+                      <li><strong>Visita:</strong> Visitam com toda a família, avaliam área de lazer</li>
                     </ul>
                   </div>
                 </div>
@@ -1928,16 +1972,16 @@ export default function AyaUrbanLanding() {
                 <div className="bg-gradient-to-r from-green-100 to-green-50 rounded-2xl p-6 border-2 border-green-300">
                   <h4 className="font-black text-green-900 mb-4 flex items-center gap-2 text-lg">
                     <Zap className="h-6 w-6 text-green-600" />
-                    Chamadas Publicitárias para Lifestyle Migrator
+                    Chamadas Publicitárias para Família com Filhos
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4">
                     {[
-                      { headline: '"Pare de pagar aluguel em SP. Compre seu resort a 50 min da capital."', format: 'Meta Ads - Feed' },
-                      { headline: '"Remote work + natureza + resort lifestyle. A combinação perfeita."', format: 'Instagram Stories' },
-                      { headline: '"Sua vista: serra. Seu escritório: coworking com café. Sua vida: equilibrada."', format: 'Meta Ads - Reels' },
-                      { headline: '"Energia solar, horta comunitária, carregador elétrico. Sustentável de verdade."', format: 'TikTok Ads' },
-                      { headline: '"114m², piscina aquecida, beach arena. Lifestyle > localização."', format: 'Pinterest Ads' },
-                      { headline: '"Troque o caos de SP pelo resort de Ribeirão Pires. Você merece."', format: 'YouTube Pre-Roll' },
+                      { headline: '"3 dorms, lazer completo e segurança 24h. O upgrade que sua família merece."', format: 'Meta Ads - Feed' },
+                      { headline: '"Playground, piscina e churrasqueira. Seus filhos vão amar morar aqui."', format: 'Instagram Stories' },
+                      { headline: '"Pertinho da escola, do hospital e do shopping. Vida prática no centro de RP."', format: 'Meta Ads - Reels' },
+                      { headline: '"Troque a casa antiga por um apê moderno. Chega de reformas e preocupações."', format: 'Google Display' },
+                      { headline: '"69m² com 3 dorms e suíte. Cada um com seu espaço, todos com conforto."', format: 'Facebook Ads' },
+                      { headline: '"Segurança de condomínio fechado no coração de Ribeirão Pires."', format: 'YouTube Pre-Roll' },
                     ].map((ad, i) => (
                       <motion.div
                         key={i}
@@ -1958,21 +2002,22 @@ export default function AyaUrbanLanding() {
             </Card>
           </motion.div>
 
-          {/* Persona 3: Investidor Estratégico */}
+          {/* Persona 3: Casal Aposentado */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="mb-12"
           >
-            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
+            <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-purple-600 to-purple-500 text-white">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                    <TrendingUp className="h-8 w-8 text-white" />
+                    <Home className="h-8 w-8 text-white" />
                   </div>
                   <div>
-                    <CardTitle className="text-2xl text-white">Persona 3: Investidor Estratégico</CardTitle>
-                    <CardDescription className="text-blue-100">Ricardo, 45 anos, Empresário</CardDescription>
+                    <CardTitle className="text-2xl text-white">Persona 3: Casal Aposentado</CardTitle>
+                    <CardDescription className="text-purple-100">Nilton e Vera, 55-65 anos</CardDescription>
                   </div>
                 </div>
               </CardHeader>
@@ -1981,16 +2026,16 @@ export default function AyaUrbanLanding() {
                   {/* Demographics & Psychographics */}
                   <div>
                     <h4 className="font-black text-gray-900 mb-4 flex items-center gap-2">
-                      <Users className="h-5 w-5 text-blue-600" />
+                      <Users className="h-5 w-5 text-purple-600" />
                       Demografia & Perfil
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-700">
-                      <li><strong>Idade:</strong> 40-55 anos</li>
-                      <li><strong>Renda:</strong> R$ 35k-60k+/mês</li>
-                      <li><strong>Família:</strong> Casado, filhos adultos ou adolescentes</li>
-                      <li><strong>Trabalho:</strong> Empresário, médico, advogado, executivo sênior</li>
-                      <li><strong>Localização Atual:</strong> SP Capital ou ABC, já possui imóvel próprio</li>
-                      <li><strong>Valores:</strong> Rentabilidade, valorização, diversificação de portfólio, oportunidade</li>
+                      <li><strong>Idade:</strong> 55-65 anos</li>
+                      <li><strong>Renda:</strong> R$ 8k-12k/mês (aposentadoria + renda extra)</li>
+                      <li><strong>Família:</strong> Casal com filhos adultos que já saíram de casa</li>
+                      <li><strong>Trabalho:</strong> Aposentados ou prestes a se aposentar</li>
+                      <li><strong>Localização Atual:</strong> Casa grande em RP ou região com manutenção cara</li>
+                      <li><strong>Valores:</strong> Tranquilidade, praticidade, saúde, convivência familiar</li>
                     </ul>
                   </div>
 
@@ -2003,23 +2048,23 @@ export default function AyaUrbanLanding() {
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Dinheiro parado em poupança/CDB rendendo abaixo da inflação</span>
+                        <span>Casa grande demais para manter - esforço físico e financeiro</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Mercado imobiliário tradicional sem oportunidades de valorização</span>
+                        <span>Preocupação com segurança em casa térrea isolada</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Ações/Bolsa voláteis demais para perfil conservador</span>
+                        <span>Falta de vizinhança e convivência social no dia a dia</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Falta de diversificação no portfólio (muito concentrado)</span>
+                        <span>Dificuldade de acessar serviços médicos e comércio rapidamente</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span>Dificuldade em encontrar oportunidades "blue ocean" no imobiliário</span>
+                        <span>Patrimônio imobilizado em imóvel antigo sem liquidez</span>
                       </li>
                     </ul>
                   </div>
@@ -2035,27 +2080,23 @@ export default function AyaUrbanLanding() {
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Investimento sólido com potencial de valorização de 30-50%</span>
+                        <span>Apartamento prático e confortável, fácil de manter</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Pioneirismo: ser o primeiro vertical alto padrão = valorização garantida</span>
+                        <span>Condomínio com portaria 24h e segurança</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Diversificação geográfica (fora de SP/ABC saturados)</span>
+                        <span>Área de lazer para convivência e atividades físicas leves</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Opção de renda passiva com aluguel (resort atrai inquilinos)</span>
+                        <span>Proximidade de hospital, farmácias e serviços essenciais</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Construtora confiável (WIND) com entrega garantida</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Eventual uso próprio (férias, finais de semana, aposentadoria)</span>
+                        <span>Vender casa e sobrar dinheiro para complementar aposentadoria</span>
                       </li>
                     </ul>
                   </div>
@@ -2067,12 +2108,161 @@ export default function AyaUrbanLanding() {
                       Comportamento de Compra
                     </h4>
                     <ul className="space-y-2 text-sm text-gray-700">
-                      <li><strong>Pesquisa:</strong> Google, LinkedIn, análise de mercado, consulta corretor de confiança</li>
-                      <li><strong>Decisão:</strong> 100% racional, análise ROI, potencial valorização, histórico construtora</li>
-                      <li><strong>Tempo:</strong> 1-3 meses, decisão rápida se números fecharem</li>
-                      <li><strong>Influência:</strong> Contador, assessor financeiro, corretor especializado</li>
-                      <li><strong>Financiamento:</strong> Preferencialmente à vista ou 50%+ entrada</li>
-                      <li><strong>Visita:</strong> Visita técnica focada em acabamento, planta, documentação</li>
+                      <li><strong>Pesquisa:</strong> Indicação de filhos/netos, visita presencial, jornal local</li>
+                      <li><strong>Decisão:</strong> Conservadora, precisa confiar na construtora e no corretor</li>
+                      <li><strong>Tempo:</strong> 6-12 meses, decisão lenta e cuidadosa</li>
+                      <li><strong>Influência:</strong> Filhos têm papel importante na decisão</li>
+                      <li><strong>Financiamento:</strong> Venda da casa atual cobre maior parte ou totalidade</li>
+                      <li><strong>Visita:</strong> Várias visitas, avaliam acabamento e acessibilidade</li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Ad Calls */}
+                <div className="bg-gradient-to-r from-purple-100 to-purple-50 rounded-2xl p-6 border-2 border-purple-300">
+                  <h4 className="font-black text-purple-900 mb-4 flex items-center gap-2 text-lg">
+                    <Zap className="h-6 w-6 text-purple-600" />
+                    Chamadas Publicitárias para Casal Aposentado
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      { headline: '"Troque a casa grande por um apê prático e seguro. Chegou sua hora de descansar."', format: 'Facebook Ads' },
+                      { headline: '"Portaria 24h, lazer no térreo e hospital a 5 min. Tranquilidade para você."', format: 'Google Display' },
+                      { headline: '"Venda sua casa e sobre dinheiro. 2 dorms com conforto no centro de RP."', format: 'Meta Ads - Feed' },
+                      { headline: '"Menos manutenção, mais qualidade de vida. Conheça o AYA Urban."', format: 'Instagram Stories' },
+                      { headline: '"Seus filhos vão adorar saber que você está seguro e bem cuidado."', format: 'Facebook Ads' },
+                      { headline: '"54m² é tudo que você precisa. Espaço ideal para o casal curtir a vida."', format: 'YouTube Pre-Roll' },
+                    ].map((ad, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                        whileHover={{ scale: 1.03, boxShadow: '0 10px 30px rgba(147, 51, 234, 0.2)' }}
+                        className="bg-white rounded-xl p-4 border border-purple-200 cursor-pointer"
+                      >
+                        <p className="font-bold text-gray-900 text-sm mb-2">{ad.headline}</p>
+                        <span className="text-xs text-purple-600 font-medium">{ad.format}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Persona 4: Investidor */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                    <TrendingUp className="h-8 w-8 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-2xl text-white">Persona 4: Investidor</CardTitle>
+                    <CardDescription className="text-blue-100">Eduardo, 40-55 anos, Empresário</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="p-8">
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                  {/* Demographics & Psychographics */}
+                  <div>
+                    <h4 className="font-black text-gray-900 mb-4 flex items-center gap-2">
+                      <Users className="h-5 w-5 text-blue-600" />
+                      Demografia & Perfil
+                    </h4>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li><strong>Idade:</strong> 40-55 anos</li>
+                      <li><strong>Renda:</strong> R$ 15k+/mês (empresário ou profissional liberal)</li>
+                      <li><strong>Família:</strong> Casado, já possui imóvel próprio</li>
+                      <li><strong>Trabalho:</strong> Empresário, médico, advogado, engenheiro</li>
+                      <li><strong>Localização Atual:</strong> Santo André, São Bernardo ou Mauá</li>
+                      <li><strong>Valores:</strong> Rentabilidade, segurança patrimonial, diversificação</li>
+                    </ul>
+                  </div>
+
+                  {/* Pain Points */}
+                  <div>
+                    <h4 className="font-black text-gray-900 mb-4 flex items-center gap-2">
+                      <AlertCircle className="h-5 w-5 text-red-600" />
+                      Dores & Frustrações
+                    </h4>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                        <span>Dinheiro parado em aplicações de baixo rendimento</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                        <span>Bolsa de valores volátil demais para perfil conservador</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                        <span>Imóveis no ABC muito caros, margem de valorização apertada</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                        <span>Dificuldade em encontrar oportunidades de entrada antecipada</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                        <span>Receio de investir em construtoras sem histórico sólido</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                  {/* Desires */}
+                  <div>
+                    <h4 className="font-black text-gray-900 mb-4 flex items-center gap-2">
+                      <Target className="h-5 w-5 text-green-600" />
+                      Desejos & Objetivos
+                    </h4>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span>Comprar na planta com potencial de valorização de 20%+ até entrega</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span>Diversificar patrimônio em mercado emergente com demanda reprimida</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span>Opção de revenda com lucro ou aluguel para renda passiva</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span>Construtora Wind/RAP com histórico de entregas</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span>Unidades compactas (54-69m²) com alta liquidez de mercado</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Behavior */}
+                  <div>
+                    <h4 className="font-black text-gray-900 mb-4 flex items-center gap-2">
+                      <Activity className="h-5 w-5 text-blue-600" />
+                      Comportamento de Compra
+                    </h4>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li><strong>Pesquisa:</strong> Google, portais especializados, análise de mercado regional</li>
+                      <li><strong>Decisão:</strong> Racional, foco em números: preço/m², valorização projetada, VGV</li>
+                      <li><strong>Tempo:</strong> 1-3 meses, decide rápido quando os números fecham</li>
+                      <li><strong>Influência:</strong> Contador, assessor financeiro, corretor de confiança</li>
+                      <li><strong>Financiamento:</strong> Preferencialmente à vista ou 50%+ de entrada</li>
+                      <li><strong>Visita:</strong> Visita técnica focada em documentação e cronograma de obra</li>
                     </ul>
                   </div>
                 </div>
@@ -2081,16 +2271,16 @@ export default function AyaUrbanLanding() {
                 <div className="bg-gradient-to-r from-blue-100 to-blue-50 rounded-2xl p-6 border-2 border-blue-300">
                   <h4 className="font-black text-blue-900 mb-4 flex items-center gap-2 text-lg">
                     <Zap className="h-6 w-6 text-blue-600" />
-                    Chamadas Publicitárias para Investidor Estratégico
+                    Chamadas Publicitárias para Investidor
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4">
                     {[
-                      { headline: '"1º vertical de Ribeirão Pires. Pioneirismo = valorização exponencial."', format: 'Google Ads - Search' },
-                      { headline: '"R$ 8.420/m² hoje. R$ 12k/m² em 2028. Faça as contas da valorização."', format: 'LinkedIn Ads' },
-                      { headline: '"Diversifique seu portfólio: imóvel resort com potencial de 40% valorização."', format: 'Google Display' },
-                      { headline: '"Investimento sólido: WIND Incorporadora + conceito único + demanda reprimida."', format: 'Facebook Ads' },
-                      { headline: '"Renda passiva garantida: resort atrai inquilinos de alto padrão facilmente."', format: 'LinkedIn Sponsored' },
-                      { headline: '"Oportunidade blue ocean: primeiro a entrar colhe os maiores frutos."', format: 'Google Ads - Display' },
+                      { headline: '"60 unidades. Demanda de 4.000+ famílias. Faça as contas."', format: 'Google Ads - Search' },
+                      { headline: '"R$ 8.938/m² hoje. Histórico de 20%+ de valorização até entrega."', format: 'LinkedIn Ads' },
+                      { headline: '"Ribeirão Pires: o próximo polo de valorização do ABC Paulista."', format: 'Google Display' },
+                      { headline: '"Wind Incorporadora + RAP Engenharia. Solidez para seu investimento."', format: 'Facebook Ads' },
+                      { headline: '"Unidades compactas com alta liquidez. Aluguel ou revenda, você escolhe."', format: 'LinkedIn Sponsored' },
+                      { headline: '"Entrada em 60x + financiamento SBPE. Alavancagem inteligente."', format: 'Google Ads - Display' },
                     ].map((ad, i) => (
                       <motion.div
                         key={i}
@@ -2135,8 +2325,8 @@ export default function AyaUrbanLanding() {
           {/* Digital Presence */}
           <div className="grid md:grid-cols-3 gap-4 mb-8">
             {[
-              { title: 'Landing Page', url: 'ayahomeresort.com.br', action: 'Analisar SEO', icon: Globe },
-              { title: 'Instagram', url: '@ayahomeresort', action: 'Ver perfil', icon: Instagram },
+              { title: 'Landing Page', url: 'ayaurban.com.br', action: 'Analisar SEO', icon: Globe },
+              { title: 'Instagram', url: '@ayaurban', action: 'Ver perfil', icon: Instagram },
               { title: 'Meta Ads', url: 'Biblioteca', action: 'Ver criativos', icon: Facebook },
             ].map((item, i) => (
               <Card key={i} className="border-2 border-gray-200 hover:border-orange-300 transition-all">
@@ -2161,16 +2351,16 @@ export default function AyaUrbanLanding() {
                   <div className="w-10 h-10 rounded-full bg-orange-600 text-white flex items-center justify-center font-black">
                     1
                   </div>
-                  <CardTitle className="text-orange-900">Fase 1: Sprint (1-2 sem)</CardTitle>
+                  <CardTitle className="text-orange-900">Fase 1: Setup (1-4 sem)</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
                   {[
-                    'Auditoria SEO',
-                    'Setup GA4 + eventos',
-                    'Auditoria Meta',
-                    'CAC histórico',
+                    'Materiais 3D e plantas humanizadas',
+                    'Tracking: Pixel, GA4, UTMs',
+                    'Landing page responsiva',
+                    'Campanhas Meta Ads iniciais',
                   ].map((task, i) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
                       <ChevronRight className="h-4 w-4 text-orange-600" />
@@ -2187,16 +2377,16 @@ export default function AyaUrbanLanding() {
                   <div className="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-black">
                     2
                   </div>
-                  <CardTitle className="text-green-900">Fase 2: Execução (3+ sem)</CardTitle>
+                  <CardTitle className="text-green-900">Fase 2: Escala (5-12 sem)</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
                   {[
-                    'Look-a-Like ABC + SP',
-                    'Remarketing',
-                    'Criativos 114m²',
-                    'Segmentação R$20k+',
+                    'Expandir geo ABC + SP',
+                    'Google Ads + Remarketing',
+                    'Conteúdo MCMV/SBPE',
+                    'Evento de lançamento',
                   ].map((task, i) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
                       <ChevronRight className="h-4 w-4 text-green-600" />
@@ -2217,11 +2407,11 @@ export default function AyaUrbanLanding() {
               <CardContent>
                 <div className="space-y-3">
                   {[
-                    { city: 'Ribeirão Pires', priority: 'Alta', color: 'orange' },
-                    { city: 'Santo André', priority: 'Muito Alta', color: 'green' },
-                    { city: 'São Bernardo', priority: 'Alta', color: 'orange' },
-                    { city: 'São Caetano', priority: 'Muito Alta', color: 'green' },
-                    { city: 'SP Zona Sul', priority: 'Estratégica', color: 'blue' },
+                    { city: 'Ribeirão Pires', priority: 'Primário', color: 'orange' },
+                    { city: 'Mauá', priority: 'Primário', color: 'orange' },
+                    { city: 'Santo André', priority: 'Secundário', color: 'green' },
+                    { city: 'São Bernardo', priority: 'Secundário', color: 'green' },
+                    { city: 'SP Zona Sul', priority: 'Expansão', color: 'blue' },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
                       <div className="flex items-center gap-2">
@@ -2239,15 +2429,15 @@ export default function AyaUrbanLanding() {
 
             <Card className="border-2 border-gray-200">
               <CardHeader>
-                <CardTitle className="text-gray-900">KPIs</CardTitle>
+                <CardTitle className="text-gray-900">Metas de 12 Semanas</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { metric: 'CAC', target: 'Definir baseline', color: 'orange' },
-                    { metric: 'CPL', target: '< R$ 150', color: 'green' },
-                    { metric: 'CVR LP', target: '> 3%', color: 'blue' },
-                    { metric: 'ROAS', target: '> 5x', color: 'purple' },
+                    { metric: 'Leads', target: '300-500', color: 'orange' },
+                    { metric: 'CPL', target: '< R$ 80', color: 'green' },
+                    { metric: 'Vendas', target: '15-25 un', color: 'blue' },
+                    { metric: 'VGV', target: 'R$ 9-15M', color: 'purple' },
                   ].map((kpi, i) => (
                     <div key={i} className="bg-gray-50 rounded-xl p-4 text-center">
                       <p className="text-xl font-black text-gray-900">{kpi.metric}</p>
@@ -2423,9 +2613,9 @@ export default function AyaUrbanLanding() {
             <CardContent>
               <div className="grid md:grid-cols-3 gap-6">
                 {[
-                  { title: 'Produto', desc: '1º Home Resort Ribeirão Pires. 114m² (R$959k-962k). Mar/28. 30+ lazer.', icon: Building2, color: 'orange' },
-                  { title: 'Desafio', desc: 'Mercado local limitado (360-540 famílias). 52.7% E+D. Economia fraca.', icon: AlertCircle, color: 'red' },
-                  { title: 'Solução', desc: 'Expansão ABC + SP. Lifestyle + investimento. Pioneirismo + preço.', icon: CheckCircle, color: 'green' },
+                  { title: 'Produto', desc: 'Vertical no centro de RP. 54-69m² + Duplex 133m² (até R$600k). Out/29. 60 unidades. Wind/RAP.', icon: Building2, color: 'orange' },
+                  { title: 'Mercado', desc: 'Demanda: 4.000-7.200 famílias qualificadas. Gap de oferta: único médio padrão até R$600k na região central.', icon: Target, color: 'blue' },
+                  { title: 'Estratégia', desc: 'Foco local + ABC. MCMV/SBPE. 4 personas. 12 semanas de ativação. Meta: 15-25 vendas no lançamento.', icon: CheckCircle, color: 'green' },
                 ].map((item, i) => (
                   <div key={i} className="text-center">
                     <div className={`w-12 h-12 rounded-2xl bg-${item.color}-100 flex items-center justify-center mx-auto mb-3`}>
