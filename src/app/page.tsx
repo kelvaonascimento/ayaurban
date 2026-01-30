@@ -1378,6 +1378,159 @@ export default function AyaUrbanLanding() {
             </CardContent>
           </Card>
 
+          {/* Análise Competitiva Detalhada - Concorrentes Diretos RP */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {/* AYA Urban vs AYA Home Resort */}
+            <Card className="border-2 border-orange-200 hover-lift">
+              <CardHeader className="pb-3">
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-base text-gray-900">AYA Urban vs AYA Home Resort</CardTitle>
+                  <span className="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded-full font-bold">Mesmo grupo</span>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm">
+                <div className="space-y-2">
+                  {[
+                    { label: 'Unidades', urban: '60', resort: '96', win: 'urban', reason: 'Mais exclusivo' },
+                    { label: 'Tipologias', urban: '54-133m²', resort: '69-229m²', win: 'resort', reason: 'Mais opções' },
+                    { label: 'Ticket médio', urban: '~R$ 550k', resort: 'R$ 580-930k', win: 'urban', reason: 'Mais acessível' },
+                    { label: 'R$/m²', urban: 'R$ 8.938', resort: 'R$ 8.400', win: 'resort', reason: 'Menor R$/m²' },
+                    { label: 'Lazer', urban: '26 itens', resort: '22 itens', win: 'urban', reason: '+4 itens' },
+                    { label: 'Entrega', urban: 'Out/2029', resort: 'Início 2028', win: 'resort', reason: 'Mais cedo' },
+                    { label: 'Vagas', urban: '64 (2 sub.)', resort: '~192 (2/apt)', win: 'resort', reason: 'Mais vagas' },
+                  ].map((row, i) => (
+                    <div key={i} className="flex items-center justify-between py-1.5 border-b border-gray-100 last:border-0">
+                      <span className="text-gray-500 w-20 flex-shrink-0">{row.label}</span>
+                      <span className={`font-bold ${row.win === 'urban' ? 'text-orange-600' : 'text-gray-700'}`}>{row.urban}</span>
+                      <span className="text-gray-300 mx-1">vs</span>
+                      <span className={`font-bold ${row.win === 'resort' ? 'text-yellow-600' : 'text-gray-700'}`}>{row.resort}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
+                  <p className="text-xs text-orange-900">
+                    <strong>Vantagem AYA Urban:</strong> Preço mais acessível, mais lazer (26 vs 22), menor densidade. Ideal para quem quer qualidade sem pagar R$ 800k+.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* AYA Urban vs Residencial Áquila */}
+            <Card className="border-2 border-blue-200 hover-lift">
+              <CardHeader className="pb-3">
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-base text-gray-900">AYA Urban vs Áquila</CardTitle>
+                  <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-bold">Obra Nobre</span>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm">
+                <div className="space-y-2">
+                  {[
+                    { label: 'Unidades', urban: '60', comp: '36', win: 'comp', reason: 'Mais exclusivo' },
+                    { label: 'Tipologias', urban: '54-133m²', comp: '58-60m²', win: 'urban', reason: 'Mais variedade' },
+                    { label: 'Ticket', urban: '~R$ 550k', comp: '~R$ 441k', win: 'comp', reason: 'Mais barato' },
+                    { label: 'R$/m²', urban: 'R$ 8.938', comp: 'R$ 7.350', win: 'comp', reason: 'Menor R$/m²' },
+                    { label: 'Lazer', urban: '26 itens', comp: '~8 itens', win: 'urban', reason: '+18 itens' },
+                    { label: 'Entrega', urban: 'Out/2029', comp: 'Dez/2026', win: 'comp', reason: 'Mais cedo' },
+                    { label: 'Dorms', urban: '2-3 (1-2 suítes)', comp: '2 (1 suíte)', win: 'urban', reason: 'Mais opções' },
+                  ].map((row, i) => (
+                    <div key={i} className="flex items-center justify-between py-1.5 border-b border-gray-100 last:border-0">
+                      <span className="text-gray-500 w-20 flex-shrink-0">{row.label}</span>
+                      <span className={`font-bold ${row.win === 'urban' ? 'text-orange-600' : 'text-gray-700'}`}>{row.urban}</span>
+                      <span className="text-gray-300 mx-1">vs</span>
+                      <span className={`font-bold ${row.win === 'comp' ? 'text-blue-600' : 'text-gray-700'}`}>{row.comp}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
+                  <p className="text-xs text-orange-900">
+                    <strong>Vantagem AYA Urban:</strong> Lazer incomparável (26 vs ~8), mais tipologias, 3 dorms com 2 suítes e coberturas duplex. Áquila entrega antes mas tem produto limitado.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* AYA Urban vs Residencial Duetto */}
+            <Card className="border-2 border-green-200 hover-lift">
+              <CardHeader className="pb-3">
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-base text-gray-900">AYA Urban vs Duetto</CardTitle>
+                  <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-bold">Toth Construtora</span>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm">
+                <div className="space-y-2">
+                  {[
+                    { label: 'Unidades', urban: '60', comp: 'N/D', win: 'urban', reason: '' },
+                    { label: 'Tipologias', urban: '54-133m²', comp: '40-57m²', win: 'urban', reason: 'Maiores' },
+                    { label: 'Ticket', urban: '~R$ 550k', comp: 'R$ 250-400k', win: 'comp', reason: 'Mais barato' },
+                    { label: 'R$/m²', urban: 'R$ 8.938', comp: 'R$ 6.400', win: 'comp', reason: 'Menor R$/m²' },
+                    { label: 'Lazer', urban: '26 itens', comp: '~5 itens', win: 'urban', reason: '+21 itens' },
+                    { label: 'Entrega', urban: 'Out/2029', comp: 'Pronto', win: 'comp', reason: 'Já entregue' },
+                    { label: 'Local', urban: 'Centro', comp: 'Bairro Roncon', win: 'urban', reason: 'Mais central' },
+                  ].map((row, i) => (
+                    <div key={i} className="flex items-center justify-between py-1.5 border-b border-gray-100 last:border-0">
+                      <span className="text-gray-500 w-20 flex-shrink-0">{row.label}</span>
+                      <span className={`font-bold ${row.win === 'urban' ? 'text-orange-600' : 'text-gray-700'}`}>{row.urban}</span>
+                      <span className="text-gray-300 mx-1">vs</span>
+                      <span className={`font-bold ${row.win === 'comp' ? 'text-green-600' : 'text-gray-700'}`}>{row.comp}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
+                  <p className="text-xs text-orange-900">
+                    <strong>Vantagem AYA Urban:</strong> Produto muito superior: 26 vs ~5 lazer, centro vs bairro, metragens maiores, coberturas duplex. Duetto compete apenas no preço.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Resumo Geral da Análise Competitiva */}
+          <Card className="border-2 border-gray-900 bg-gray-900 text-white mb-8 hover-lift">
+            <CardContent className="p-8">
+              <h3 className="text-xl font-black mb-6 flex items-center gap-3">
+                <Target className="h-6 w-6 text-orange-500" />
+                Conclusão da Análise Competitiva
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-bold text-orange-400 mb-3">Onde o AYA Urban vence</h4>
+                  <ul className="space-y-2">
+                    {[
+                      'Líder em lazer na região: 26 itens (14 cobertos + 12 descobertos)',
+                      'Única opção com jacuzzi, pista de caminhada, redário e deck bem-estar',
+                      'Maior variedade de plantas: 4 tipologias (54m² a 133m² duplex)',
+                      'Localização central em Ribeirão Pires',
+                      'Coberturas duplex 133m² exclusivas no segmento',
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
+                        <Check className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-bold text-yellow-400 mb-3">Pontos de atenção</h4>
+                  <ul className="space-y-2">
+                    {[
+                      'Preço/m² mais alto da região (R$ 8.938) — justificado pelo lazer e localização',
+                      'Entrega mais distante (Out/2029) vs Áquila (2026) e Duetto (pronto)',
+                      'AYA Resort do mesmo grupo compete no público de maior renda',
+                      'Ticket ~R$ 550k exige renda familiar mínima ~R$ 12k/mês',
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
+                        <AlertCircle className="h-4 w-4 text-yellow-400 mt-0.5 flex-shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Resumo Preço/m² por Região */}
           <Card className="border-2 border-orange-200 mb-8 hover-lift">
             <CardHeader>
