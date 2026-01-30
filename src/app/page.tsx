@@ -141,7 +141,7 @@ export default function AyaUrbanLanding() {
     { subject: 'Custo-Benefício', AYAUrban: 75, AYAResort: 60, Aquila: 80, Duetto: 90 },
     { subject: 'Metragem', AYAUrban: 85, AYAResort: 95, Aquila: 70, Duetto: 55 },
     { subject: 'Localização', AYAUrban: 95, AYAResort: 90, Aquila: 95, Duetto: 70 },
-    { subject: 'Lazer/Estrutura', AYAUrban: 85, AYAResort: 100, Aquila: 65, Duetto: 50 },
+    { subject: 'Lazer/Estrutura', AYAUrban: 95, AYAResort: 90, Aquila: 65, Duetto: 50 },
     { subject: 'Exclusividade', AYAUrban: 90, AYAResort: 85, Aquila: 75, Duetto: 60 },
     { subject: 'Valorização', AYAUrban: 95, AYAResort: 80, Aquila: 75, Duetto: 70 },
   ]
@@ -476,8 +476,8 @@ export default function AyaUrbanLanding() {
                   <Sparkles className="h-6 w-6" />
                 </motion.div>
               </div>
-              <p className="text-2xl font-black mb-1 relative z-10">A Preencher</p>
-              <p className="text-sm text-white/80 relative z-10">Aguardando dados</p>
+              <p className="text-2xl font-black mb-1 relative z-10">26 Itens</p>
+              <p className="text-sm text-white/80 relative z-10">14 cobertos + 12 descobertos</p>
             </motion.div>
 
             {/* Público Local */}
@@ -721,19 +721,44 @@ export default function AyaUrbanLanding() {
                   ))}
                 </div>
 
-                {/* Lazer - A Preencher */}
-                <div className="mt-8 p-6 bg-amber-50 rounded-xl border-2 border-amber-200 border-dashed">
+                {/* Lazer Coberto */}
+                <div className="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
                   <div className="flex items-center gap-3 mb-4">
-                    <AlertCircle className="h-6 w-6 text-amber-600" />
-                    <h4 className="text-lg font-bold text-amber-900">Área de Lazer - Dados Pendentes</h4>
+                    <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center">
+                      <Building2 className="h-4 w-4 text-orange-600" />
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900">Lazer Coberto — 14 itens</h4>
                   </div>
-                  <p className="text-amber-800 mb-4">
-                    Os itens de lazer do AYA Urban ainda não foram informados. Esta seção será atualizada assim que recebermos as informações completas do empreendimento.
-                  </p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {['Piscina', 'Academia', 'Salão de Festas', 'Churrasqueira', 'Playground', 'Pet Place', 'Coworking', 'Outros'].map((item, i) => (
-                      <div key={i} className="bg-white/50 rounded-lg p-3 text-center border border-amber-200">
-                        <span className="text-sm text-amber-700">A Confirmar</span>
+                    {[
+                      'Lobby', 'Bicicletário', 'Lavanderia', 'Espaço Delivery',
+                      'Espaço Manual', 'Coworking', 'Espaço Work', 'Espaço Beauty',
+                      'Espaço Fitness', 'Espaço Família', 'Salão de Jogos', 'Brinquedoteca',
+                      'Salão de Festas 1', 'Salão de Festas 2'
+                    ].map((item, i) => (
+                      <div key={i} className="bg-white rounded-lg p-3 text-center border border-gray-200">
+                        <span className="text-sm font-medium text-gray-800">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Lazer Descoberto */}
+                <div className="mt-4 p-6 bg-green-50 rounded-xl border border-green-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center">
+                      <Leaf className="h-4 w-4 text-green-600" />
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900">Lazer Descoberto — 12 itens</h4>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {[
+                      'Horta', 'Playground', 'Fitness Externo', 'Espaço Gourmet',
+                      'Pet Place', 'Espaço Piquenique', 'Redário', 'Pista de Caminhada',
+                      'Praça do Fogo', 'Deck Bem-Estar', 'Jacuzzi', 'Solarium'
+                    ].map((item, i) => (
+                      <div key={i} className="bg-white rounded-lg p-3 text-center border border-green-200">
+                        <span className="text-sm font-medium text-gray-800">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -784,12 +809,50 @@ export default function AyaUrbanLanding() {
                       </ul>
                     </div>
                   </div>
-                  <div className="bg-amber-50 rounded-xl p-6 border-2 border-amber-200 border-dashed flex flex-col items-center justify-center">
-                    <AlertCircle className="h-12 w-12 text-amber-500 mb-4" />
-                    <h4 className="font-bold text-amber-900 mb-2">Análise Competitiva</h4>
-                    <p className="text-amber-800 text-center text-sm">
-                      Comparativo com concorrentes será atualizado após receber dados completos de lazer e preços.
-                    </p>
+                  <div className="bg-orange-50 rounded-xl p-6 border border-orange-200">
+                    <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                      <BarChart3 className="h-5 w-5 text-orange-600" />
+                      Comparativo de Lazer
+                    </h4>
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-700">AYA Urban</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-32 bg-gray-200 rounded-full h-2">
+                            <div className="bg-orange-500 h-2 rounded-full" style={{ width: '100%' }}></div>
+                          </div>
+                          <span className="text-sm font-bold text-orange-600">26 itens</span>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-700">AYA Resort</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-32 bg-gray-200 rounded-full h-2">
+                            <div className="bg-yellow-500 h-2 rounded-full" style={{ width: '85%' }}></div>
+                          </div>
+                          <span className="text-sm font-bold text-gray-600">22 itens</span>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-700">Áquila</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-32 bg-gray-200 rounded-full h-2">
+                            <div className="bg-blue-500 h-2 rounded-full" style={{ width: '31%' }}></div>
+                          </div>
+                          <span className="text-sm font-bold text-gray-600">~8 itens</span>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-700">Duetto</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-32 bg-gray-200 rounded-full h-2">
+                            <div className="bg-green-500 h-2 rounded-full" style={{ width: '19%' }}></div>
+                          </div>
+                          <span className="text-sm font-bold text-gray-600">~5 itens</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-4">AYA Urban lidera em quantidade de lazer na região</p>
                   </div>
                 </div>
               </CardContent>
@@ -1426,12 +1489,12 @@ export default function AyaUrbanLanding() {
                     {[
                       { text: 'Localização Premium: Centro de RP, próximo a comércio, escolas, hospital e estação de trem', strong: true },
                       { text: 'Produto Versátil: 2-3 dorms (54-69m²) + coberturas duplex 133m² - atende diversos perfis', strong: true },
-                      { text: 'Qualidade Construtiva Wind/RAP: padrão elevado, lazer no térreo e cobertura (rooftop)', strong: true },
+                      { text: 'Qualidade Construtiva Wind/RAP: padrão elevado, 26 itens de lazer (14 cobertos + 12 descobertos)', strong: true },
                       { text: 'Exclusividade: apenas 60 unidades, torre única - ambiente familiar e baixa densidade', strong: true },
                       { text: '64 vagas de garagem (suficientes + extras para visitantes), portaria 24h, segurança moderna', strong: false },
                       { text: 'Flexibilidade de Pagamento: parcelamento longo durante obra, entrada facilitada, uso de FGTS', strong: false },
                       { text: 'Gap de mercado: único produto "padrão bom" até R$ 600k na região central de RP', strong: true },
-                      { text: 'Melhor custo-benefício vs AYA Resort (preço mais acessível) e vs Áquila (lazer superior)', strong: false },
+                      { text: 'Melhor custo-benefício vs AYA Resort (preço mais acessível) e vs Áquila/Duetto (26 itens de lazer vs ~8 e ~5)', strong: false },
                       { text: 'Demanda reprimida: lei de zoneamento 2023 liberou verticais, famílias aguardavam opções', strong: false },
                       { text: 'Potencial de valorização: pioneirismo vertical tende a elevar preços significativamente', strong: true },
                     ].map((item, i) => (
@@ -1479,7 +1542,7 @@ export default function AyaUrbanLanding() {
                       { text: 'Resistência cultural: muitos residem em casas/sobrados, preferem "quintal próprio"', critical: false },
                       { text: 'Concorrência Interna: AYA Home Resort do mesmo grupo pode criar sobreposição de público', critical: false },
                       { text: 'Marca Wind sem recall imediato: diferente de Helbor, MRV, Cyrela - desafio de credibilidade inicial', critical: true },
-                      { text: 'Áreas comuns mais compactas: torre única implica lazer menor que condomínios clube grandes', critical: false },
+                      { text: 'Terreno menor (1.202m²): lazer distribuído no térreo e cobertura, sem grandes áreas abertas', critical: false },
                       { text: 'Salário médio local modesto (~R$ 3.054/mês) - público-alvo limitado em RP', critical: false },
                       { text: 'Possível proximidade de via movimentada ou linha férrea - verificar ruído', critical: false },
                       { text: 'Dependência de financiamento: maioria dos compradores precisará de crédito aprovado em 2029', critical: false },
@@ -1774,7 +1837,7 @@ export default function AyaUrbanLanding() {
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Condomínio com lazer básico (piscina, churrasqueira)</span>
+                        <span>Condomínio com 26 itens de lazer (jacuzzi, fitness, playground, pet place e mais)</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
@@ -1810,7 +1873,7 @@ export default function AyaUrbanLanding() {
                     {[
                       { headline: '"Seu primeiro apê no centro de Ribeirão Pires. A partir de R$ 350k."', format: 'Meta Ads - Feed' },
                       { headline: '"Saia do aluguel! Parcelas a partir de R$ 2.800/mês."', format: 'Google Ads - Search' },
-                      { headline: '"2 dorms, lazer completo e entrada facilitada. Conheça o AYA Urban."', format: 'Meta Ads - Stories' },
+                      { headline: '"2 dorms, 26 itens de lazer e entrada facilitada. Conheça o AYA Urban."', format: 'Meta Ads - Stories' },
                       { headline: '"Financiamento MCMV ou SBPE. Assessoria gratuita para aprovação."', format: 'Google Display' },
                       { headline: '"Casais jovens de RP estão trocando aluguel por patrimônio."', format: 'Meta Ads - Reels' },
                       { headline: '"Perto do trabalho, do trem e da família. Seu lar no centro de RP."', format: 'Instagram Stories' },
@@ -1916,7 +1979,7 @@ export default function AyaUrbanLanding() {
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Condomínio com playground, piscina e áreas para crianças</span>
+                        <span>Condomínio com playground, brinquedoteca, espaço família e 26 itens de lazer</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
@@ -1958,8 +2021,8 @@ export default function AyaUrbanLanding() {
                   </h4>
                   <div className="grid md:grid-cols-2 gap-4">
                     {[
-                      { headline: '"3 dorms, lazer completo e segurança 24h. O upgrade que sua família merece."', format: 'Meta Ads - Feed' },
-                      { headline: '"Playground, piscina e churrasqueira. Seus filhos vão amar morar aqui."', format: 'Instagram Stories' },
+                      { headline: '"3 dorms, 26 itens de lazer e segurança 24h. O upgrade que sua família merece."', format: 'Meta Ads - Feed' },
+                      { headline: '"Playground, brinquedoteca e jacuzzi. Seus filhos vão amar morar aqui."', format: 'Instagram Stories' },
                       { headline: '"Pertinho da escola, do hospital e do shopping. Vida prática no centro de RP."', format: 'Meta Ads - Reels' },
                       { headline: '"Troque a casa antiga por um apê moderno. Chega de reformas e preocupações."', format: 'Google Display' },
                       { headline: '"69m² com 3 dorms e suíte. Cada um com seu espaço, todos com conforto."', format: 'Facebook Ads' },
@@ -2070,7 +2133,7 @@ export default function AyaUrbanLanding() {
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>Área de lazer para convivência e atividades físicas leves</span>
+                        <span>26 itens de lazer: fitness, deck bem-estar, pista de caminhada, jacuzzi e mais</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
@@ -2109,7 +2172,7 @@ export default function AyaUrbanLanding() {
                   <div className="grid md:grid-cols-2 gap-4">
                     {[
                       { headline: '"Troque a casa grande por um apê prático e seguro. Chegou sua hora de descansar."', format: 'Facebook Ads' },
-                      { headline: '"Portaria 24h, lazer no térreo e hospital a 5 min. Tranquilidade para você."', format: 'Google Display' },
+                      { headline: '"Portaria 24h, 26 itens de lazer e hospital a 5 min. Tranquilidade para você."', format: 'Google Display' },
                       { headline: '"Venda sua casa e sobre dinheiro. 2 dorms com conforto no centro de RP."', format: 'Meta Ads - Feed' },
                       { headline: '"Menos manutenção, mais qualidade de vida. Conheça o AYA Urban."', format: 'Instagram Stories' },
                       { headline: '"Seus filhos vão adorar saber que você está seguro e bem cuidado."', format: 'Facebook Ads' },
